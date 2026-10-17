@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2696687960749452&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1652154433085331&ev=PageView&noscript=1"/></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Learn with 3 Point Traders</title>
@@ -147,9 +147,9 @@
     border:2px solid #bfe9ff!important; padding:14px 16px!important; min-height:66px;
     animation:btnBlink 1.1s ease-in-out infinite, btnRing 1.8s ease-out infinite!important;}
   .ctaBtn::before{content:""; position:absolute; inset:-5px; border-radius:17px; z-index:-1; padding:3px;
-    background:conic-gradient(from 0deg,#F0C878,#ff4d6d,#2FBF71,#22d3ee,#F0C878);
+    background:linear-gradient(90deg,#F0C878,#ff4d6d,#2FBF71,#22d3ee,#F0C878,#F0C878);
     -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude;
-    animation:spinBorder 2.4s linear infinite;}
+    background-size:300% 100%; animation:borderFlow 2.4s linear infinite;}
   .ctaBtn .shine{position:absolute; inset:0; border-radius:12px; overflow:hidden; pointer-events:none;}
   .ctaBtn .shine::after{content:""; position:absolute; top:0; bottom:0; width:46%; left:-60%;
     background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent); transform:skewX(-20deg); animation:shineSweep 2.2s ease-in-out infinite;}
@@ -168,7 +168,7 @@
   .ctaBtn.busy{pointer-events:none; opacity:.8;}
   @keyframes btnBlink{0%,100%{filter:brightness(1);transform:scale(1)}50%{filter:brightness(1.3) saturate(1.2);transform:scale(1.03)}}
   @keyframes btnRing{0%{box-shadow:0 0 0 0 rgba(34,158,217,.75),0 12px 28px -8px rgba(34,158,217,.7)}100%{box-shadow:0 0 0 16px rgba(34,158,217,0),0 12px 28px -8px rgba(34,158,217,.7)}}
-  @keyframes spinBorder{to{transform:rotate(360deg)}}
+  @keyframes borderFlow{to{background-position:300% 0}}
   @keyframes shineSweep{0%{left:-60%}60%,100%{left:130%}}
   @keyframes planeFloat{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(3px,-4px) rotate(-8deg)}}
   @keyframes arrNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
@@ -186,9 +186,43 @@
   .gate .hint{display:none; margin-top:10px; font-size:12.5px; color:#ff9aa0; text-align:center; line-height:1.6;}
   .gate .hint.show{display:block;}
   .gate .ctaWrap{margin-top:16px;}
+
+  /* ===== Confirmation sheet (replaces the form) ===== */
+  .sheet{display:none; position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.72); align-items:flex-end; justify-content:center; padding:0;}
+  .sheet.show{display:flex;}
+  .panel{width:100%; max-width:480px; background:var(--card); border:1px solid var(--gold); border-bottom:none; border-radius:22px 22px 0 0; padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px)); position:relative; animation:slideUp .28s ease-out;}
+  @keyframes slideUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+  .panel .x{position:absolute; top:10px; right:14px; width:34px; height:34px; border-radius:50%; background:var(--bg-alt); color:var(--muted); border:1px solid var(--line); font-size:18px; line-height:1; cursor:pointer;}
+  .panel h3{font-family:'Poppins',sans-serif; font-size:18px; color:#fff; padding-right:36px;}
+  .panel h3 .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-size:14px; color:var(--gold-bright); font-weight:600; margin-top:3px;}
+  .tgMock{margin:14px 0 10px; background:#17212b; border:1px solid #2b3a4a; border-radius:16px; padding:16px 14px 14px; text-align:center;}
+  .tgMock img{width:62px; height:62px; border-radius:50%; object-fit:cover; margin:0 auto; border:2px solid var(--gold);}
+  .tgMock .n{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; margin-top:8px; color:#fff;}
+  .tgMock .m{font-size:11.5px; color:#8a9aab; margin-top:1px;}
+  .tgMock .rq{margin-top:12px; padding:12px; border-radius:10px; background:#2ea6ff; color:#fff; font-family:'Poppins',sans-serif; font-weight:800; font-size:14.5px; letter-spacing:.6px; animation:rqBlink 1s ease-in-out infinite; box-shadow:0 0 0 0 rgba(46,166,255,.7);}
+  .tgMock .up{display:block; margin-top:6px; font-size:12px; color:var(--gold-bright); font-weight:700; animation:arrBob .8s ease-in-out infinite;}
+  @keyframes rqBlink{0%,100%{filter:brightness(1); box-shadow:0 0 0 0 rgba(46,166,255,.7)}50%{filter:brightness(1.25); box-shadow:0 0 0 9px rgba(46,166,255,0)}}
+  @keyframes arrBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .panel .why{font-size:12.5px; line-height:1.65; color:var(--text); background:rgba(212,175,106,.08); border:1px dashed rgba(240,200,120,.45); border-radius:10px; padding:9px 11px; margin-bottom:14px;}
+  .panel .why .ta{display:block; color:var(--gold-bright); margin-top:2px;}
+  .panel .ctaBtn.wait{filter:grayscale(.85) brightness(.75); animation:none!important; box-shadow:none!important; pointer-events:none;}
+  .panel .ctaBtn.wait::before,.panel .ctaBtn.wait .shine::after,.panel .ctaBtn.wait .tag,.panel .ctaBtn.wait .arr,.panel .ctaBtn.wait .tgIcon{animation:none!important;}
+  .panel .ctaBtn.wait::before{opacity:0;}
+  .backBar{display:none; position:fixed; left:12px; right:12px; bottom:14px; z-index:70; max-width:456px; margin:0 auto; background:var(--gold-bright); color:#1a1200; border-radius:14px; padding:12px 14px; font-size:13px; line-height:1.5; font-weight:700; box-shadow:0 8px 28px rgba(0,0,0,.55);}
+  .backBar .ta{display:block; font-weight:600;}
+  .backBar a{display:block; margin-top:8px; background:#0B1220; color:#fff; text-align:center; padding:10px; border-radius:10px; font-weight:800;}
   @media (min-width:768px){#page{max-width:520px;}}
   @media (max-width:340px){.hero{padding:26px 14px 22px;} .points,.benefits,.finalCta{padding-left:12px; padding-right:12px;}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important;}}
+
+  /* ===== Confirm sheet buttons ===== */
+  .cfBtn{display:block; width:100%; text-align:center; border:none; cursor:pointer; border-radius:12px; padding:13px 14px; font-family:'Poppins',sans-serif; font-weight:800; font-size:15px; line-height:1.3; touch-action:manipulation; -webkit-tap-highlight-color:transparent;}
+  .cfBtn .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-weight:600; font-size:12px; margin-top:2px;}
+  .cfBtn.yes{background:var(--green); color:#04210f; margin-top:6px;}
+  .cfBtn.again{background:var(--bg-alt); color:#fff; border:1px solid var(--line); margin-top:10px;}
+  .cfBtn.wait{filter:grayscale(.85) brightness(.7); pointer-events:none;}
+  .cfDone{display:none; text-align:center; padding:10px 0 6px; font-size:14px; line-height:1.7; color:#fff;}
+  .cfDone .ta{display:block; color:var(--gold-bright); font-family:'Noto Sans Tamil',sans-serif;}
 </style>
 </head>
 <body>
@@ -225,23 +259,15 @@
     <div class="taLine">சரியான Entry, Target &amp; Stop-Loss வைத்து சந்தையை புரிந்துகொள்ளுங்கள் — 3 பாயிண்ட் முறையில்.</div>
     <div class="subEn">Simple 3-Point method to read any chart — Entry, Target &amp; Stop-Loss. Join our Telegram channel and start learning today.</div>
 
-    <div class="gate" id="gate">
-      <h2>Enter your details to join<span class="ta">சேர உங்கள் விவரங்களை உள்ளிடவும்</span></h2>
-      <label class="ta" for="nm">உங்கள் பெயர் / Your Name</label>
-      <input id="nm" type="text" autocomplete="name" maxlength="40" placeholder="பெயர் / Name">
-      <label class="ta" for="ag">உங்கள் வயது / Your Age</label>
-      <input id="ag" type="tel" inputmode="numeric" autocomplete="off" maxlength="2" placeholder="வயது / Age (18+)">
-      <p id="hint" class="hint ta">⚠️ முதலில் பெயர் &amp; வயது (18+) உள்ளிடவும் / Please enter your name &amp; age (18+) first</p>
-      <div class="ctaWrap">
-        <a href="#" rel="noopener" class="jnBtn ctaBtn locked" data-id="hero"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
-      </div>
+    <div class="ctaWrap">
+      <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="hero"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
     </div>
-    <div class="ctaWrap" style="margin-top:12px;">
+    <div class="ctaWrap" style="margin-top:10px;">
       <div class="microcopy">100% Free to join · இணைவது இலவசம்</div>
       <div class="steps">1️⃣ Tap the button → Telegram opens &nbsp; 2️⃣ Tap <b>"Join / Request to Join"</b>
         <span class="ta">1️⃣ பட்டனை அழுத்தவும் → Telegram திறக்கும் &nbsp; 2️⃣ <b>"Join / Request to Join"</b> அழுத்தவும்</span></div>
-      <div class="fbNote" data-note>Telegram did not open? <a href="https://t.me/+ojldgqzCrAk1YTM9" rel="noopener">Tap here</a>, or use the (⋮) menu → "Open in Browser / Chrome".
-        <span class="ta">Telegram திறக்கவில்லையா? <a href="https://t.me/+ojldgqzCrAk1YTM9" rel="noopener">இங்கே அழுத்தவும்</a> அல்லது (⋮) மெனு → "Open in Browser / Chrome" தேர்வு செய்யவும்.</span></div>
+      <div class="fbNote" data-note>Telegram did not open? <a href="#" class="tgFallback" rel="noopener">Tap here</a>, or use the (⋮) menu → "Open in Browser / Chrome".
+        <span class="ta">Telegram திறக்கவில்லையா? <a href="#" class="tgFallback" rel="noopener">இங்கே அழுத்தவும்</a> அல்லது (⋮) மெனு → "Open in Browser / Chrome" தேர்வு செய்யவும்.</span></div>
     </div>
   </section>
 
@@ -272,7 +298,7 @@
     </div>
 
     <div class="ctaWrap">
-      <a href="#" rel="noopener" class="jnBtn ctaBtn locked" data-id="mid"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
+      <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="mid"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
     </div>
   </section>
 
@@ -307,9 +333,9 @@
     <div class="card">
       <h3>Start Learning Today<span class="ta">இன்றே கற்க தொடங்குங்கள்</span></h3>
       <div class="ctaWrap" style="margin-top:16px;">
-        <a href="#" rel="noopener" class="jnBtn ctaBtn locked" data-id="final"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
+        <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="final"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
       </div>
-      <div class="fbNote" data-note>Telegram did not open? <a href="https://t.me/+ojldgqzCrAk1YTM9" rel="noopener">Tap here</a> · <span class="ta">Telegram திறக்கவில்லையா? <a href="https://t.me/+ojldgqzCrAk1YTM9" rel="noopener">இங்கே அழுத்தவும்</a></span></div>
+      <div class="fbNote" data-note>Telegram did not open? <a href="#" class="tgFallback" rel="noopener">Tap here</a> · <span class="ta">Telegram திறக்கவில்லையா? <a href="#" class="tgFallback" rel="noopener">இங்கே அழுத்தவும்</a></span></div>
       <p class="small">Limited seats in the free batch · இலவச batch-ல் இடங்கள் குறைவு</p>
     </div>
   </section>
@@ -327,16 +353,40 @@
 
 </div>
 
+<div class="sheet" id="cf" role="dialog" aria-modal="true">
+  <div class="panel">
+    <button class="x" id="cfX" type="button" aria-label="Close">&times;</button>
+    <div id="cfBody">
+      <h3>Did you tap "REQUEST TO JOIN"?<span class="ta">Telegram-ல் "REQUEST TO JOIN" அழுத்தினீர்களா?</span></h3>
+      <div class="tgMock">
+        <div class="rq">REQUEST TO JOIN</div>
+        <span class="up">&#9757; Tap this blue button inside Telegram<br>Telegram-ல் இந்த நீல பட்டனை அழுத்தவும்</span>
+      </div>
+      <button type="button" class="cfBtn yes wait" id="cfYes">&#9989; Yes, I sent the request<span class="ta">ஆம், அழுத்திவிட்டேன்</span></button>
+      <a href="#" rel="noopener" class="cfBtn again jnBtn2">&#128178; No &mdash; open Telegram again<span class="ta">இல்லை, மீண்டும் திறக்கவும்</span></a>
+    </div>
+    <div class="cfDone" id="cfDone">&#127881; Great! Now wait for admin approval in Telegram.<span class="ta">அருமை! Telegram-ல் admin approve செய்யும் வரை காத்திருக்கவும்.</span></div>
+  </div>
+</div>
+
+<div class="backBar" id="back">Did you tap <b>"REQUEST TO JOIN"</b> in Telegram?
+  <span class="ta">Telegram-ல் <b>"REQUEST TO JOIN"</b> அழுத்தினீர்களா? இல்லையெனில் மீண்டும் திறக்கவும்.</span>
+  <a href="#" class="tgFallback" rel="noopener">📲 Open Telegram again · மீண்டும் திறக்கவும்</a></div>
+
 <script>
 (() => {
   'use strict';
   const CONFIG = Object.freeze({
-    pixelId: '2696687960749452',
-    telegramUrl: 'https://t.me/+ojldgqzCrAk1YTM9',
-    telegramInvite: 'ojldgqzCrAk1YTM9',
+    pixelId: '1652154433085331',
+    telegramUrl: ['https://t.me/+','4XFar3obWc','Y1YWRl'].join(''),
+    telegramInvite: ['4XFar3obWc','Y1YWRl'].join(''),
     pageViewDelayMs: 1000,
     passiveReaderDelayMs: 3000,
-    minimumClickTimeMs: 1500,
+    minimumClickTimeMs: 2500,      // tap before this = no Lead eligibility (accidental / bot-speed taps)
+    minAwayMs: 6000,               // must stay out of the page (inside Telegram) at least this long
+    maxAwayMs: 30*60*1000,         // returning after >30 min = unrelated visit, ignored
+    confirmEnableMs: 2000,         // "Yes" button stays locked for 2s (stops reflex taps)
+    leadMode: 'confirm',           // 'confirm' = Lead only after Yes tap | 'return' = Lead on return from Telegram (no question)
     sessionKey: 'tpt_qualified_page_view',
     leadKey: 'tpt_lead_v2',
     leadWindowMs: 12*60*60*1000
@@ -375,69 +425,103 @@
 
   const androidIntent = () => `intent://join?invite=${CONFIG.telegramInvite}#Intent;scheme=tg;S.browser_fallback_url=${encodeURIComponent(CONFIG.telegramUrl)};end`;
 
-  /* ===== Gate: valid name + age required before any Telegram button works ===== */
+  /* ===== Telegram buttons + "real request" Lead logic =====
+     - Buttons are real <a href> links: Telegram opens instantly, no form, no popup, no preventDefault, no delay.
+     - TAP DOES NOT FIRE Lead any more. A tap only starts an "attempt".
+     - Lead fires only after ALL of these are true:
+         1) real finger tap (isTrusted, not automation) after >= minimumClickTimeMs on the page
+         2) the page really went to the background (visitor is inside Telegram)
+         3) visitor stayed away >= minAwayMs (enough time to actually press REQUEST TO JOIN)
+         4) visitor comes back and taps "Yes, I sent the request" (leadMode 'confirm'; Yes unlocks after 2s)
+     - once per device per 12h; fake / accidental / repeat taps never become a Lead. */
   const $ = id => document.getElementById(id);
-  const nm = $('nm'), ag = $('ag'), hint = $('hint'), gate = $('gate');
-  const btns = () => Array.from(document.querySelectorAll('.jnBtn'));
-  const nameOk = () => { const v = nm.value.trim(); return v.length >= 2 && /[A-Za-z\u0B80-\u0BFF]{2,}/.test(v); };
-  const ageOk = () => { const v = ag.value.trim(), a = parseInt(v, 10); return /^\d{2}$/.test(v) && a >= 18 && a <= 70; };
-  const formOk = () => nameOk() && ageOk();
+  const back = $('back'), sheet = $('cf'), cfYes = $('cfYes'), cfBody = $('cfBody'), cfDone = $('cfDone');
+  const tgUrl = CONFIG.telegramUrl;
+  const btnHref = () => (isFbIab() && isAndroid()) ? androidIntent() : tgUrl;
+  let attempt = null, pending = null, handedOff = false, hiddenAt = 0, watch = null, enableTimer = null;
 
-  function render() {
-    const ok = formOk() && !automation();
-    nm.classList.toggle('ok', nameOk()); nm.classList.toggle('bad', nm.value.length > 0 && !nameOk());
-    ag.classList.toggle('ok', ageOk());  ag.classList.toggle('bad', ag.value.length > 0 && !ageOk());
-    btns().forEach(b => {
-      b.classList.toggle('locked', !ok);
-      b.setAttribute('href', ok ? CONFIG.telegramUrl : '#');
-    });
-    if (ok) hint.classList.remove('show');
+  function setLinks() {
+    document.querySelectorAll('.jnBtn, .jnBtn2').forEach(a => a.setAttribute('href', btnHref()));
+    document.querySelectorAll('.tgFallback').forEach(a => a.setAttribute('href', tgUrl));
   }
 
-  /* one Lead per device per 12h (stops reload / repeat taps inflating Meta results) */
-  const leadDone = () => { try { const t = +localStorage.getItem(CONFIG.leadKey); return t && Date.now() - t < CONFIG.leadWindowMs; } catch (e) { return leadTracked; } };
+  const leadDone = () => { try { const t = +localStorage.getItem(CONFIG.leadKey); return !!t && Date.now() - t < CONFIG.leadWindowMs; } catch (e) { return leadTracked; } };
   const leadMark = () => { leadTracked = true; try { localStorage.setItem(CONFIG.leadKey, String(Date.now())); } catch (e) {} };
+  const track = (name, data) => { try { if (typeof window.fbq === 'function') fbq('trackCustom', name, data || {}); } catch (x) {} };
+  const closeSheet = () => { sheet.classList.remove('show'); clearTimeout(enableTimer); };
 
-  let busy = false;
-  function onJoinClick(event) {
-    /* untrusted / automated taps never go through and never count */
-    if (!event.isTrusted || automation()) { event.preventDefault(); return; }
-    /* locked: send the visitor to the form instead of firing anything */
-    if (!formOk()) {
-      event.preventDefault();
-      hint.classList.add('show');
-      gate.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      (nameOk() ? ag : nm).focus({ preventScroll: true });
-      return;
-    }
-    /* ignore double taps */
-    if (busy) { event.preventDefault(); return; }
-    busy = true; const self = event.currentTarget; self.classList.add('busy');
-    setTimeout(() => { busy = false; self.classList.remove('busy'); }, 3500);
+  function fireLead(a, awayMs, confirmed) {
+    if (leadDone() || typeof window.fbq !== 'function') return false;
+    const id = 'ld_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+    try {
+      fbq('track', 'Lead', { value: 0, currency: 'INR', destination: 'Telegram', confirmed: confirmed ? 1 : 0, away_s: Math.round(awayMs / 1000), time_on_page: a.onPage }, { eventID: id });
+    } catch (x) { return false; }
+    leadMark();
+    return true;
+  }
 
+  /* 1) tap -> start attempt (NO Lead here) */
+  function startAttempt(e) {
+    if (!e.isTrusted || automation()) { e.preventDefault(); return; }
     const t = Date.now() - pageOpenedAt;
-    const qualified = document.visibilityState === 'visible' && t >= CONFIG.minimumClickTimeMs && !leadDone();
-    if (qualified && typeof window.fbq === 'function') {
-      const id = 'ld_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
-      fbq('track', 'Lead', { value: 0, currency: 'INR', destination: 'Telegram', time_on_page: Math.round(t / 1000) }, { eventID: id });
-      leadMark();
-    }
-    /* No delay before navigating: it must happen inside the tap so the phone lets Telegram open. */
-    if (isFbIab()) {
-      event.preventDefault();
-      window.location.href = isAndroid() ? androidIntent() : `tg://join?invite=${CONFIG.telegramInvite}`;
-    }
-    setTimeout(() => {
-      if (document.visibilityState !== 'visible') return;
-      document.querySelectorAll('[data-note]').forEach(n => n.classList.add('show'));
+    attempt = {
+      at: Date.now(), onPage: Math.round(t / 1000),
+      eligible: document.visibilityState === 'visible' && t >= CONFIG.minimumClickTimeMs && !leadDone() && typeof window.fbq === 'function'
+    };
+    pending = null; handedOff = false; hiddenAt = 0;
+    back.style.display = 'none'; closeSheet();
+    track('TgTap', { eligible: attempt.eligible ? 1 : 0, time_on_page: attempt.onPage, in_app: isFbIab() ? 1 : 0, os: isAndroid() ? 'android' : (isIOS() ? 'ios' : 'other') });
+    /* navigation stays 100% native; this only shows the help note if Telegram did not open */
+    clearTimeout(watch);
+    watch = setTimeout(() => {
+      const stuck = !handedOff && document.visibilityState === 'visible';
+      track('TgHandoff', { result: stuck ? 'stuck' : 'ok', in_app: isFbIab() ? 1 : 0, os: isAndroid() ? 'android' : (isIOS() ? 'ios' : 'other') });
+      if (stuck) document.querySelectorAll('[data-note]').forEach(n => n.classList.add('show'));
     }, 2200);
   }
 
+  /* 2) leaving the page = inside Telegram (remember when) */
+  const markHidden = () => { handedOff = true; if (attempt && !hiddenAt) hiddenAt = Date.now(); };
+  document.addEventListener('visibilitychange', () => { document.visibilityState === 'hidden' ? markHidden() : onReturn(); });
+  window.addEventListener('pagehide', markHidden);
+  window.addEventListener('blur', () => { handedOff = true; });
+  window.addEventListener('pageshow', ev => { if (ev.persisted) onReturn(); });
+
+  /* 3) back on the page: was the visitor away long enough for a real request? */
+  function onReturn() {
+    if (!attempt || !hiddenAt || document.visibilityState !== 'visible') return;
+    const away = Date.now() - hiddenAt; hiddenAt = 0;
+    if (away > CONFIG.maxAwayMs) { attempt = null; return; }
+    const a = attempt;
+    track('TgAway', { away_s: Math.round(away / 1000), eligible: a.eligible ? 1 : 0 });
+    /* too fast / not eligible: no Lead, just the "open Telegram again" reminder */
+    if (!a.eligible || away < CONFIG.minAwayMs) { back.style.display = 'block'; return; }
+    if (CONFIG.leadMode === 'return') { fireLead(a, away, false); attempt = null; back.style.display = 'block'; return; }
+    openSheet(a, away);
+  }
+
+  /* 4) confirmation sheet (one tap, NOT a form) */
+  function openSheet(a, away) {
+    pending = { a: a, away: away };
+    cfBody.style.display = 'block'; cfDone.style.display = 'none';
+    cfYes.classList.add('wait');
+    sheet.classList.add('show');
+    clearTimeout(enableTimer);
+    enableTimer = setTimeout(() => cfYes.classList.remove('wait'), CONFIG.confirmEnableMs);
+  }
+  cfYes.addEventListener('click', e => {
+    if (!e.isTrusted || automation() || !pending || cfYes.classList.contains('wait')) return;
+    fireLead(pending.a, pending.away, true);
+    track('TgConfirm', { result: 'yes' });
+    attempt = null; pending = null;
+    cfBody.style.display = 'none'; cfDone.style.display = 'block';
+    setTimeout(closeSheet, 2600);
+  });
+  $('cfX').addEventListener('click', () => { track('TgConfirm', { result: 'dismiss' }); pending = null; attempt = null; closeSheet(); });
+
   function init() {
-    ag.addEventListener('input', () => { ag.value = ag.value.replace(/\D/g, '').slice(0, 2); render(); });
-    nm.addEventListener('input', render);
-    btns().forEach(b => b.addEventListener('click', onJoinClick));
-    render();
+    setLinks();
+    document.querySelectorAll('.jnBtn, .jnBtn2, .tgFallback').forEach(b => b.addEventListener('click', startAttempt));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
