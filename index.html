@@ -1,531 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1652154433085331&ev=PageView&noscript=1"/></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Learn with 3 Point Traders</title>
+<title>3 Point Traders - Skill Learning Machine</title>
+<meta name="description" content="3 Point Traders - Skill Learning Machine. Free Tamil & English trading education community on Telegram.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#040908">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Tamil:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
 <style>
-  :root{
-    --bg:#0B1220;
-    --bg-alt:#101A2C;
-    --card:#131F35;
-    --line:#22314B;
-    --gold:#D4AF6A;
-    --gold-bright:#F0C878;
-    --green:#2FBF71;
-    --red:#E5484D;
-    --text:#EDEFF3;
-    --muted:#8B93A7;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  .ta{font-family:'Noto Sans Tamil','IBM Plex Sans',sans-serif;}
-  .en{font-family:'Poppins',sans-serif;}
-  img{max-width:100%; display:block;}
-  a{text-decoration:none; color:inherit;}
-
-  /* ---------- Page ---------- */
-  #page{max-width:480px; margin:0 auto; position:relative;}
-
-  /* Candlestick signature background */
-  .wickField{position:absolute; inset:0; overflow:hidden; pointer-events:none; opacity:.55;}
-  .wickField svg{position:absolute; top:0; left:0; width:100%; height:100%;}
-
-  header.top{
-    display:flex; align-items:center; gap:10px; padding:16px 18px;
-    border-bottom:1px solid var(--line); position:relative; z-index:2;
-    background:linear-gradient(180deg, rgba(11,18,32,.95), rgba(11,18,32,.7));
-  }
-  header.top .logo{width:40px; height:40px; border-radius:10px; object-fit:cover; border:1px solid var(--gold);}
-  header.top .brandtext{line-height:1.2;}
-  header.top .brandtext .en{font-size:15px; font-weight:700; letter-spacing:.2px;}
-  header.top .brandtext .ta{font-size:11px; color:var(--gold-bright);}
-
-  /* HERO */
-  .hero{position:relative; padding:34px 20px 26px; z-index:2; text-align:center;}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:6px; font-size:11.5px; letter-spacing:.6px;
-    color:var(--gold-bright); border:1px solid var(--gold); border-radius:20px; padding:5px 14px;
-    margin-bottom:16px; text-transform:uppercase;
-  }
-  .hero h1{font-family:'Poppins',sans-serif; font-weight:800; font-size:27px; line-height:1.28; color:#fff;}
-  .hero h1 span{color:var(--gold-bright);}
-  .hero .taLine{
-    font-family:'Noto Sans Tamil',sans-serif; font-weight:600; font-size:17px; color:var(--text);
-    margin-top:10px; line-height:1.6;
-  }
-  .hero .subEn{color:var(--muted); font-size:13.5px; margin-top:10px; line-height:1.6;}
-
-  .ctaBtn{
-    display:block; width:100%; text-align:center; padding:15px 18px; border-radius:12px;
-    font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:#0B1220;
-    background:linear-gradient(135deg, var(--gold-bright), var(--gold));
-    box-shadow:0 10px 24px -8px rgba(212,175,106,.55);
-    border:none; cursor:pointer; position:relative;
-  }
-  .ctaBtn .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-weight:600; font-size:12.5px; margin-top:2px; color:#1a2436;}
-  .ctaBtn:active{transform:scale(.98);}
-  .ctaWrap{margin-top:20px;}
-  .ctaWrap .microcopy{font-size:11px; color:var(--muted); margin-top:8px;}
-
-  /* 3-POINT SYSTEM SECTION */
-  .points{padding:8px 18px 30px; position:relative; z-index:2;}
-  .points h2{font-family:'Poppins',sans-serif; font-size:19px; text-align:center; color:#fff; margin-bottom:2px;}
-  .points h2 .ta{display:block; font-size:13px; color:var(--gold-bright); font-weight:600; margin-top:4px;}
-  .pointCards{margin-top:20px; display:flex; flex-direction:column; gap:12px;}
-  .pointCard{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px;
-    display:flex; gap:14px; align-items:flex-start; position:relative; overflow:hidden;
-  }
-  .pointCard::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px;}
-  .pointCard.entry::before{background:var(--green);}
-  .pointCard.target::before{background:var(--gold);}
-  .pointCard.sl::before{background:var(--red);}
-  .pointMark{
-    width:38px; height:38px; min-width:38px; border-radius:10px; display:flex; align-items:center; justify-content:center;
-    font-family:'Poppins',sans-serif; font-weight:800; font-size:16px; background:var(--bg-alt); border:1px solid var(--line);
-  }
-  .entry .pointMark{color:var(--green); border-color:var(--green);}
-  .target .pointMark{color:var(--gold-bright); border-color:var(--gold);}
-  .sl .pointMark{color:var(--red); border-color:var(--red);}
-  .pointCard .txt .en{font-family:'Poppins',sans-serif; font-weight:700; font-size:14.5px; color:#fff;}
-  .pointCard .txt .ta{font-family:'Noto Sans Tamil',sans-serif; font-size:12.5px; color:var(--muted); margin-top:3px; line-height:1.5;}
-
-  /* BENEFITS */
-  .benefits{padding:6px 18px 28px; position:relative; z-index:2;}
-  .benefits h2{font-family:'Poppins',sans-serif; font-size:19px; text-align:center; color:#fff;}
-  .benefits h2 .ta{display:block; font-size:13px; color:var(--gold-bright); font-weight:600; margin-top:4px;}
-  .benList{margin-top:18px; display:flex; flex-direction:column; gap:11px;}
-  .benItem{display:flex; gap:10px; align-items:flex-start; background:var(--bg-alt); border:1px solid var(--line); border-radius:12px; padding:12px 14px;}
-  .benItem .tick{width:20px; height:20px; min-width:20px; border-radius:50%; background:rgba(47,191,113,.15); color:var(--green); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; margin-top:1px;}
-  .benItem .en{font-size:13.5px; font-weight:600; color:#fff;}
-  .benItem .ta{font-family:'Noto Sans Tamil',sans-serif; font-size:12px; color:var(--muted); margin-top:2px;}
-
-  /* FINAL CTA */
-  .finalCta{padding:8px 18px 36px; position:relative; z-index:2; text-align:center;}
-  .finalCta .card{
-    background:radial-gradient(120% 140% at 50% 0%, rgba(212,175,106,.14), rgba(19,31,53,.9));
-    border:1px solid var(--gold); border-radius:18px; padding:26px 20px;
-  }
-  .finalCta h3{font-family:'Poppins',sans-serif; font-size:19px; color:#fff;}
-  .finalCta h3 .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-size:14px; color:var(--gold-bright); margin-top:6px; font-weight:600;}
-  .finalCta p.small{font-size:12px; color:var(--muted); margin-top:10px;}
-
-  /* FOOTER */
-  footer{padding:22px 20px 30px; text-align:center; position:relative; z-index:2; border-top:1px solid var(--line);}
-  .agencyBlock{font-size:12px; color:var(--muted); line-height:1.7;}
-  .agencyBlock b{color:var(--text);}
-  .agencyBlock a{color:var(--gold-bright);}
-  .disclaimer{font-size:10.5px; color:#5C6479; margin-top:14px; line-height:1.6; padding:0 6px;}
-  .disclaimer .ta{display:block; margin-top:5px;}
-
-  @media (min-width:601px){
-    #page{box-shadow:0 0 60px rgba(0,0,0,.5);}
-  }
-
-  /* ===== fixes ===== */
-  html,body{min-height:100vh; min-height:100dvh;}
-  header.top{padding-top:max(16px, env(safe-area-inset-top,0px));}
-  footer{padding-bottom:max(30px, env(safe-area-inset-bottom,0px));}
-  .hero h1{font-size:clamp(23px,7vw,30px);}
-  .hero .taLine{font-size:clamp(15px,4.4vw,18px);}
-  .ctaBtn{min-height:56px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; animation:ctaPulse 1.8s ease-in-out infinite;}
-  @keyframes ctaPulse{0%,100%{box-shadow:0 10px 24px -8px rgba(212,175,106,.55),0 0 0 0 rgba(240,200,120,.4);}50%{box-shadow:0 10px 24px -8px rgba(212,175,106,.55),0 0 0 8px rgba(240,200,120,0);}}
-  .steps{margin-top:12px; padding:10px 12px; border:1px dashed rgba(240,200,120,.45); background:rgba(212,175,106,.07); border-radius:10px; font-size:12px; line-height:1.6; color:var(--text); text-align:left;}
-  .steps .ta{display:block; color:var(--gold-bright);}
-  .fbNote{display:none; margin-top:10px; font-size:12px; line-height:1.6; color:var(--gold-bright); background:rgba(212,175,106,.1); border:1px solid rgba(212,175,106,.35); border-radius:10px; padding:9px 11px; text-align:left;}
-  .fbNote.show{display:block;}
-  .fbNote a{text-decoration:underline; font-weight:600;}
-
-  /* ===== Highlighted blinking Telegram button ===== */
-  .ctaBtn{display:flex!important; align-items:center; justify-content:center; gap:12px; text-align:left; overflow:visible!important; isolation:isolate;
-    color:#fff!important; background:linear-gradient(135deg,#1fa2e6 0%,#2481cc 45%,#0f6fb8 100%)!important;
-    border:2px solid #bfe9ff!important; padding:14px 16px!important; min-height:66px;
-    animation:btnBlink 1.1s ease-in-out infinite, btnRing 1.8s ease-out infinite!important;}
-  .ctaBtn::before{content:""; position:absolute; inset:-5px; border-radius:17px; z-index:-1; padding:3px;
-    background:linear-gradient(90deg,#F0C878,#ff4d6d,#2FBF71,#22d3ee,#F0C878,#F0C878);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude;
-    background-size:300% 100%; animation:borderFlow 2.4s linear infinite;}
-  .ctaBtn .shine{position:absolute; inset:0; border-radius:12px; overflow:hidden; pointer-events:none;}
-  .ctaBtn .shine::after{content:""; position:absolute; top:0; bottom:0; width:46%; left:-60%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent); transform:skewX(-20deg); animation:shineSweep 2.2s ease-in-out infinite;}
-  .ctaBtn .tgIcon{width:42px; height:42px; min-width:42px; border-radius:50%; background:#fff; color:#229ED9; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 0 0 4px rgba(255,255,255,.25); animation:planeFloat 1.4s ease-in-out infinite;}
-  .ctaBtn .tgIcon svg{width:24px; height:24px; margin-left:-2px;}
-  .ctaBtn .lbl{display:block; flex:1; line-height:1.25;}
-  .ctaBtn .lbl .en{display:block; font-size:16px; font-weight:800; letter-spacing:.2px; color:#fff;}
-  .ctaBtn .lbl .ta{display:block!important; font-size:12.5px!important; margin-top:3px!important; color:#e4f6ff!important;}
-  .ctaBtn .arr{font-size:22px; font-weight:800; color:#ffe27a; animation:arrNudge .9s ease-in-out infinite;}
-  .ctaBtn .tag{position:absolute; top:-10px; right:12px; font-style:normal; font-size:10.5px; font-weight:800; letter-spacing:.8px; padding:3px 9px; border-radius:20px;
-    background:#E5484D; color:#fff; border:1.5px solid #fff; animation:tagBlink .7s steps(2,jump-none) infinite;}
-  .ctaBtn.locked{filter:grayscale(.85) brightness(.75); animation:none!important; box-shadow:none!important;}
-  .ctaBtn.locked::before,.ctaBtn.locked .shine::after,.ctaBtn.locked .tag,.ctaBtn.locked .arr,.ctaBtn.locked .tgIcon{animation:none!important;}
-  .ctaBtn.locked::before{opacity:0;}
-  .ctaBtn.busy{pointer-events:none; opacity:.8;}
-  @keyframes btnBlink{0%,100%{filter:brightness(1);transform:scale(1)}50%{filter:brightness(1.3) saturate(1.2);transform:scale(1.03)}}
-  @keyframes btnRing{0%{box-shadow:0 0 0 0 rgba(34,158,217,.75),0 12px 28px -8px rgba(34,158,217,.7)}100%{box-shadow:0 0 0 16px rgba(34,158,217,0),0 12px 28px -8px rgba(34,158,217,.7)}}
-  @keyframes borderFlow{to{background-position:300% 0}}
-  @keyframes shineSweep{0%{left:-60%}60%,100%{left:130%}}
-  @keyframes planeFloat{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(3px,-4px) rotate(-8deg)}}
-  @keyframes arrNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
-  @keyframes tagBlink{0%{opacity:1}50%{opacity:.25}}
-
-  /* ===== Name + Age gate ===== */
-  .gate{margin-top:20px; background:var(--card); border:1px solid var(--gold); border-radius:16px; padding:16px; text-align:left; position:relative; z-index:2; scroll-margin-top:16px;}
-  .gate h2{font-family:'Poppins',sans-serif; font-size:15px; color:var(--gold-bright); margin-bottom:4px;}
-  .gate h2 .ta{display:block; font-size:12.5px; font-weight:600; color:var(--muted); margin-top:2px;}
-  .gate label{display:block; font-size:12.5px; color:var(--muted); margin:10px 0 5px;}
-  .gate input{width:100%; background:#0b1220; border:1.5px solid #2c3d5c; color:#fff; border-radius:12px; padding:13px 14px; font-size:16px; font-family:inherit; outline:none; transition:border .2s;}
-  .gate input:focus{border-color:var(--gold-bright);}
-  .gate input.ok{border-color:var(--green);}
-  .gate input.bad{border-color:var(--red);}
-  .gate .hint{display:none; margin-top:10px; font-size:12.5px; color:#ff9aa0; text-align:center; line-height:1.6;}
-  .gate .hint.show{display:block;}
-  .gate .ctaWrap{margin-top:16px;}
-
-  /* ===== Confirmation sheet (replaces the form) ===== */
-  .sheet{display:none; position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.72); align-items:flex-end; justify-content:center; padding:0;}
-  .sheet.show{display:flex;}
-  .panel{width:100%; max-width:480px; background:var(--card); border:1px solid var(--gold); border-bottom:none; border-radius:22px 22px 0 0; padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px)); position:relative; animation:slideUp .28s ease-out;}
-  @keyframes slideUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
-  .panel .x{position:absolute; top:10px; right:14px; width:34px; height:34px; border-radius:50%; background:var(--bg-alt); color:var(--muted); border:1px solid var(--line); font-size:18px; line-height:1; cursor:pointer;}
-  .panel h3{font-family:'Poppins',sans-serif; font-size:18px; color:#fff; padding-right:36px;}
-  .panel h3 .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-size:14px; color:var(--gold-bright); font-weight:600; margin-top:3px;}
-  .tgMock{margin:14px 0 10px; background:#17212b; border:1px solid #2b3a4a; border-radius:16px; padding:16px 14px 14px; text-align:center;}
-  .tgMock img{width:62px; height:62px; border-radius:50%; object-fit:cover; margin:0 auto; border:2px solid var(--gold);}
-  .tgMock .n{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; margin-top:8px; color:#fff;}
-  .tgMock .m{font-size:11.5px; color:#8a9aab; margin-top:1px;}
-  .tgMock .rq{margin-top:12px; padding:12px; border-radius:10px; background:#2ea6ff; color:#fff; font-family:'Poppins',sans-serif; font-weight:800; font-size:14.5px; letter-spacing:.6px; animation:rqBlink 1s ease-in-out infinite; box-shadow:0 0 0 0 rgba(46,166,255,.7);}
-  .tgMock .up{display:block; margin-top:6px; font-size:12px; color:var(--gold-bright); font-weight:700; animation:arrBob .8s ease-in-out infinite;}
-  @keyframes rqBlink{0%,100%{filter:brightness(1); box-shadow:0 0 0 0 rgba(46,166,255,.7)}50%{filter:brightness(1.25); box-shadow:0 0 0 9px rgba(46,166,255,0)}}
-  @keyframes arrBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-  .panel .why{font-size:12.5px; line-height:1.65; color:var(--text); background:rgba(212,175,106,.08); border:1px dashed rgba(240,200,120,.45); border-radius:10px; padding:9px 11px; margin-bottom:14px;}
-  .panel .why .ta{display:block; color:var(--gold-bright); margin-top:2px;}
-  .panel .ctaBtn.wait{filter:grayscale(.85) brightness(.75); animation:none!important; box-shadow:none!important; pointer-events:none;}
-  .panel .ctaBtn.wait::before,.panel .ctaBtn.wait .shine::after,.panel .ctaBtn.wait .tag,.panel .ctaBtn.wait .arr,.panel .ctaBtn.wait .tgIcon{animation:none!important;}
-  .panel .ctaBtn.wait::before{opacity:0;}
-  .backBar{display:none; position:fixed; left:12px; right:12px; bottom:14px; z-index:70; max-width:456px; margin:0 auto; background:var(--gold-bright); color:#1a1200; border-radius:14px; padding:12px 14px; font-size:13px; line-height:1.5; font-weight:700; box-shadow:0 8px 28px rgba(0,0,0,.55);}
-  .backBar .ta{display:block; font-weight:600;}
-  .backBar a{display:block; margin-top:8px; background:#0B1220; color:#fff; text-align:center; padding:10px; border-radius:10px; font-weight:800;}
-  @media (min-width:768px){#page{max-width:520px;}}
-  @media (max-width:340px){.hero{padding:26px 14px 22px;} .points,.benefits,.finalCta{padding-left:12px; padding-right:12px;}}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important;}}
-
-  /* ===== Confirm sheet buttons ===== */
-  .cfBtn{display:block; width:100%; text-align:center; border:none; cursor:pointer; border-radius:12px; padding:13px 14px; font-family:'Poppins',sans-serif; font-weight:800; font-size:15px; line-height:1.3; touch-action:manipulation; -webkit-tap-highlight-color:transparent;}
-  .cfBtn .ta{display:block; font-family:'Noto Sans Tamil',sans-serif; font-weight:600; font-size:12px; margin-top:2px;}
-  .cfBtn.yes{background:var(--green); color:#04210f; margin-top:6px;}
-  .cfBtn.again{background:var(--bg-alt); color:#fff; border:1px solid var(--line); margin-top:10px;}
-  .cfBtn.wait{filter:grayscale(.85) brightness(.7); pointer-events:none;}
-  .cfDone{display:none; text-align:center; padding:10px 0 6px; font-size:14px; line-height:1.7; color:#fff;}
-  .cfDone .ta{display:block; color:var(--gold-bright); font-family:'Noto Sans Tamil',sans-serif;}
+:root{--bg:#040908;--card:#0e1a16;--line:#1f3a30;--green:#1fb35f;--red:#e5383b;--gold:#ffc93c;--text:#f4fff9;--muted:#a9c4b8}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Poppins','Noto Sans Tamil',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:radial-gradient(800px 400px at 15% -5%,#0b4a2a 0%,transparent 65%),radial-gradient(700px 380px at 100% 30%,#4a0f12 0%,transparent 60%),var(--bg);color:var(--text);line-height:1.55;min-height:100vh;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{width:100%;max-width:480px;margin:0 auto;padding:18px 16px 36px}
+.ta{font-family:'Noto Sans Tamil','Poppins',sans-serif}
+#iab{display:none;background:#3a2a00;border:1px solid var(--gold);color:var(--gold);border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px;text-align:center}
+#back{display:none;background:#06331f;border:1px solid #3ddc97;color:#bff5dc;border-radius:12px;padding:10px 12px;font-size:13.5px;margin-top:14px;text-align:center}
+.top{text-align:center}
+.logo{display:block;width:112px;height:112px;margin:0 auto;border-radius:50%;object-fit:cover;background:#fff;border:3px solid #fff;box-shadow:0 0 0 6px rgba(31,179,95,.2),0 0 34px rgba(229,56,59,.45);animation:ring 2.6s ease-in-out infinite}
+@keyframes ring{50%{box-shadow:0 0 0 10px rgba(31,179,95,.1),0 0 50px rgba(229,56,59,.7)}}
+.eyebrow{display:inline-block;margin-top:14px;padding:7px 15px;border-radius:999px;background:linear-gradient(90deg,rgba(31,179,95,.18),rgba(229,56,59,.18));border:1px solid rgba(255,201,60,.6);color:#ffe9a8;font-size:12.5px;font-weight:600}
+.cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:16px;padding:19px 12px;border-radius:16px;text-decoration:none;font-weight:800;font-size:17px;color:#fff;background:#23322c;border:2px solid #3c5a4d;text-align:center;line-height:1.3;transition:all .25s}
+.cta svg{width:24px;height:24px;flex:none}
+.cta.ready{background:linear-gradient(120deg,#14a652,#e5383b);border-color:#ffe9a8;box-shadow:0 0 0 0 rgba(31,179,95,.7),0 10px 30px rgba(229,56,59,.4);animation:pulse 1.3s ease-out infinite,pop 1.3s ease-in-out infinite}
+.cta.ready::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 2.2s ease-in-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,179,95,.75),0 10px 30px rgba(229,56,59,.4)}100%{box-shadow:0 0 0 18px rgba(31,179,95,0),0 10px 30px rgba(229,56,59,.4)}}
+@keyframes pop{50%{transform:scale(1.03)}}
+@keyframes shine{0%{left:-60%}60%,100%{left:130%}}
+.hint{display:none;margin-top:10px;font-size:12.5px;color:#ffb3b3;text-align:center}
+.hint.show{display:block}
+.note{margin-top:9px;font-size:12px;color:var(--muted);text-align:center}
+h1{font-size:25px;line-height:1.25;margin-top:24px;font-weight:800;background:linear-gradient(90deg,#7dffb0,#ffe07a 55%,#ff8a8c);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.sub{margin-top:8px;font-size:15.5px;font-weight:600;color:#fff;text-align:center}
+.lead{margin-top:6px;color:var(--muted);font-size:13.5px;text-align:center}
+.disc{margin-top:22px;font-size:11.5px;color:#7fa093;text-align:center;line-height:1.6}
+.ad{margin-top:14px;text-align:center;font-size:12px;color:var(--muted)}
+.ad a{color:var(--gold);text-decoration:none;font-weight:600}
+.trap{position:absolute!important;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0}
+#dbg{position:fixed;bottom:6px;left:6px;z-index:9;background:#000c;color:#0f0;font:11px monospace;padding:4px 6px;border-radius:6px;display:none}
+@media (prefers-reduced-motion:reduce){.logo,.cta.ready,.cta.ready::after{animation:none}}
 </style>
 </head>
 <body>
-
-<div id="page">
-
-  <div class="wickField">
-    <svg viewBox="0 0 480 900" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#2FBF71" stroke-width="2" opacity="0.35">
-        <line x1="40" y1="60" x2="40" y2="130"/><rect x="33" y="80" width="14" height="35" fill="#2FBF71"/>
-        <line x1="90" y1="40" x2="90" y2="150"/><rect x="83" y="70" width="14" height="55" fill="#2FBF71"/>
-      </g>
-      <g stroke="#E5484D" stroke-width="2" opacity="0.30">
-        <line x1="140" y1="90" x2="140" y2="170"/><rect x="133" y="100" width="14" height="45" fill="#E5484D"/>
-      </g>
-      <g stroke="#D4AF6A" stroke-width="2" opacity="0.35">
-        <line x1="410" y1="700" x2="410" y2="800"/><rect x="403" y="730" width="14" height="40" fill="#D4AF6A"/>
-        <line x1="440" y1="680" x2="440" y2="790"/><rect x="433" y="700" width="14" height="55" fill="#D4AF6A"/>
-      </g>
-    </svg>
-  </div>
+<a class="trap" id="trap" href="#trap" tabindex="-1" aria-hidden="true">join</a><div id="dbg"></div>
+<div class="wrap">
+  <div id="iab" class="ta">⚠️ தயவுசெய்து இந்தப் பக்கத்தை Chrome / Safari-ல் திறக்கவும் (மேலே ⋮ → Open in browser). / Please open this page in your browser for smooth Telegram opening.</div>
 
   <header class="top">
-    <img class="logo" src="3pt.jpeg" alt="3 Point Traders logo">
-    <div class="brandtext">
-      <div class="en">3 Point Traders</div>
-      <div class="ta">தமிழில் டிரேடிங் கற்றல்</div>
-    </div>
+    <img class="logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCADwAPADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAcIAQYDBAUJAv/EAEsQAAEDAwEFBAcDCAgFAwUAAAECAwQABREGBxIhMUETUWGBCBQiMnGRoRVCYhYjUnKCkrGyJDM3Q2ais8EXJXa00XOD8CYnRsLh/8QAGwEAAgMBAQEAAAAAAAAAAAAAAAQCAwUBBgf/xAA2EQABAwIEAwYFAwMFAAAAAAABAAIDBBESITFBBRNRFCIyYXGxBoGRocEzUtEjQvAVNXLh8f/aAAwDAQACEQMRAD8AqpSlKEJSlKEJSlKEJSsgZrtwLVLuT4ZisLcVjJwMBI7yTwA8TQhdTFc0aFJmuhqMw484eSG0lR+QrbbZpCM04hEjfuMhZ3UsRwQknuyPaX+yB8amnRvo96wvzCDIaZ03blHJQ4nC1Dv7JPE/tnNLmoBNmC5VBnBNmZqBoui5Sj/TZDMPvSo9ov8AdTnHmRXs2zRMOS8lmLHuVzf5bjacZP6qAo/Wrg6a9HHRdkShc9h68yBjKpisN58G04HzzUk22z2+zsCPboMWG0OARHaS2n5AUYZnamymA86qmNn2GaxuODC0QIyFffloSjh3/nVE/StygejftAfwp2XaIHDGA+eA/YRirT4HdWaOz38RJUxkq1J9F3VCxvO6nt28fwuq/wDFYV6L2qWhljU1tKunsup/hmrLVwmU0mUmKVp7ZSC4EZ4lIIBOO7JHzrnZY1c2d7dFV6d6OW0Fkbzcq1T+mDIPL/3EYrT7xsM1fbkkzdECQkc3IraV8O/LSgfpV16xujOcUdnA8JIV7aw/3NB+S+dtz0VAYeU1IjXG1vDhuLGQD+qsA/WvFlaIlpBMKQxMHRGezc/dVgHyJr6Q3Gz2+7sli4QYsxo8Ch9pLg+tRvqb0c9F3tK1wWX7M+rkYist+basj5YowzN0N1e2WjlykaW+Yz+yoRKt8qC6WpUd1hwfdcSUn61wYqz+sPR/1fYWFiKzH1FbU8dxtGVpHeWlcR+wc1DF10bDdWtEYOW2SklKmJAUUb3dk+0j9rPxFdFQAbPFlN3CXPbjpnB48tfotGpXduNomWt/sZbC21EZBxlKh3pI4EeIrpkYNMDPNZTmlpsVilKULiUpShCUpShCUpShCUpShCVkca5GWXHnEobQpalEJCUjJJPQDvre9NaRcRMYjsRV3G7vKCWmGk9oG1HoB95Q+SfHmK5JAwXKrllbGLuXi2rSm8hMi6FTLRG8llJw44O/j7ifE8T0B51NuzjYZf8AWbLLqmU2LT6sKStaDvPDvQg8VH8ajjuzyqVNlvo9w7GWrxq1LVxuh9tMYnfZjq7zn+sX4ngOmedTBcblBssF2ZPlMxIrKd5bzyglCR4k1TgdJnJkOiXEb5e9LkOn8rXdE7LtM6DZAtUBJlFO6ua/7b6/2ug8E4FbaEgVHVn2kT9oNxcjaNgbtpjr3ZF8moIbJ/RZb4FavFRAHUHkZCYQpttKVLKyOajjJ8eFXsw27uiZYW27ui5KUpU1NKUpQhKhC96+9V9Ii2Qe2xFZji2ODPDtHRv8f2uzFTceA76qTe9nOvJu0d5fqTCb1Lccu7KPWkYDaXRg72cDB3RilapzgG4eqSrXvaG4BurbJzjJrNcMRTy4zS5DfZvKQCtAOd1WOIz8a5qZCdSlKV1CxuA1qetNmOmdcsqF1gI9axhExn2H0ftDmPA5FbbSuFoIsVOOR8bsTDYqou0PYdftGsPONtC/WHipZS2d5od60Dik/jSflUJXfR43FSbTvvNjKlMKOXUDvGPfT4gZHUda+kqk7wxiob2nbAYV/U5eNLpbt11B31MA7jMhXeMe4vxHDv76VMTos48x0W4yugrRy60Wds8fkKidYqSdVaOddnPxZcZVuvLKil1txO4HVdyuiVHoocFde+o9lRXor62Xm1tuIUUqSsYII6EVfHK2QXCza2glpH4X6HQjQjyXBSs8qxViSSlKUISlKUISuVhhb7iW20qUpRCQEjJJPIVxgZrf9JaZlNvxo8aM4/eZxDbLKE5U0FcgO5ZHM/dHxOK5JAwXKqllEbbldzRujZsi4x7Va4vrl7lns/YwQ0OoB5DA95fkOubi7KdkNr2dW8OrCJd4fRiRLKfd/A3+ij6nr0Axsg2UQtnVn33g2/eZSQZUhPJPXs0dyR9Tx7gJD5Cq44yTjfqqoYiTzJNfZeVqTUdu0pZZV3uj4Yixk7yjzJPRIHUk8AKrdFl6i9IvW6Yshx6FpyGrtXGEK9lhvOBnop1XLPTjjgOPF6RuvHL9qg6ejun7PtBw4AeDkgj2ie/dB3R471TXsR0a1pHQcFC2gmbOSJkpXUqWMpT+ynA+dUl3OkwDQaqgvM8vLHhGvmtys9mg2G2RrbbYzUWJGQG2mmxgJH/nvPU13utKU8FoAWSlKULqUpShCVoMvhtvto/w9I/10Vv1aBM/txtv/T0j/XRVcm3qq5NvULf+VKUqxWJSlKEJSlKEJSlKELQtqGyi17QrcVkIi3ZlOI8xKeP6i/0kfw5jxp/rXRMyNPftF3jiFeInsIW4fZcT0BVyKT91fTkeHK/pGRg1oW1bZfB2hWj2QiPdYySYskjhn9Bfeg/TmKXliN+YzX3Wzw/iDAzslXnGfq09R/C+eMmK7GfWy82ttxtRSpKxggjmCK69SXrHSkp19+FKirYvUAltbSh7ToSPcPeoD3T1HDuqNSMVZFKJG3CU4hQvpJcDswcwdiFilKVYkUrOM1iu7aLc5dJ7UVohJWeKlckJHEqPgACfKg5LhNsyva0pakbpuklILbZKWUKHBxwccn8KeBPecDvq4Po+bKzYIA1XeWD9rTkEx0Oe9HZVxyc/fXzPcMDqai3YRs6a1pqVMl+MfsGy7pLahwdXzQ2e/JytXy61bxKQOVKx/wBV3MOmyUiHOfzXaDT+UFYcVuIKv0Rmv1WCMjjxppNlUEvEty4XWbMkEqW+848vPMlSiT/Gr22KZHn2aDKiqSph6O242U8ikpBFUn17YHdMaxu1qdSR2ElZbJHvNqO8g+aSKkvYxtwb0zEb0/qNS/s1s/0eWkFRjgn3FAcSjPIjiPhyx6WYRSOa/dYNDOIpXNkyurOUrpWm9W6+REy7bNjTGFjIcYcCx9K7m8O8Vrg3W8CDmFmlflTiUJKlEJSBkk8AK0TV+27RGjULTLvDUuUBwiwSHnCe444J/aIoLgNVwuAzJW+0rVtm2sH9eaWY1C5AMBmY44Y7KnN9fZJUUhSjyySCcDgBitpoBuug3zStBl/24W0/4ekf66K36tAl/wBuNtHT8npH+uiov29VCXb1C3+lKVNWJSlYKgKELNK8i4av09anexn3y2RXf0HpKEq+ROa78OfFuDCJESQzIYcGUOsrCkqHgRwNcuFIscBcjJdilKV1RSlKUIUObfNmH5R21WpbSyftaCjLqGx7Ulocen308x4ZHdVPdZWcLAu8ZACXCEyEpHBLh5Lx3K4+YPeK+khSCeNVN26bPWtIaiXMYjk2S872W0jAbWeK0Du6KT//AClJhync0abr0XD3iugNBKe8M2H8fNVgIxWK9C92xy03F2K4d7dOULA4LQeKVD4gg159NA3zC8+5paS12oWRzrd9IWlxMNtTLKnJlzWGGEDmU7wAA/WXw+CfGtRtsNyfOYit8FvLCAe7PXy51Zr0cdIt3/W6rsprNusbSSyCOBcI3Wx5AKV8cVRUEkCMbpOqcSBG3U+ysNs20YxoTSEGzNhJfQntJLg/vXlcVn58B4AVtNYAwKzV7QALBMtAAsEpSldXVEe3XZO5rSCi9WZpJvEJG6W+sprnu/rDiR35I7qqy6y7HcU042pC21FKkqBSpJHMEHkRX0CPGtC19sb03rxSpMhpcK5KGPXY2AtXdvpPBfnx8aQqqPmd5mqy62g5pxs1VQoNzmWxztoMuRFc/TYcU2T5gjNex/xP1syndRqy8gDgB6yo1vl+9GfVkBxRtci33RrjjDnYuY/VVw+RrVZOxLaE2so/JiWrHVDjah896s4QzMysVlCCojNrFahdtV3+8JUi5Xu5zQrmH5K1j5E4rX18AAAAO6pSi+j3tFnYJsSIyT96RKbTjyBJrtTPRh19HhLkhNqfUhJV6uzKJcV4DKQCfOr2RSakFMshlOZBWyWzbfL2a6f0HEZhtzLS9ZEuSWUgJc3w8tBKFd43TwPA56c6sNpLVlp1pZWLxZpQkRXh3YU2rqhQ+6odRVGobrtx+z4EhpBTaG31uds12oSwFdosdnkFW6Ss4yOfMYqSthGs41g1pbkW7ejWnUTyoMuCpwrSxLSAWnGySTuqBxgkkZIJOAaehluc9FpQTEnPRW0rQJhxtytg/wAOyP8AuEVvw5VoEzP/ABztp/w7I/7hFMP2TUm3qpApSlTVi61ynt2yBImvBxTbDanFBtBWogDPBI4k+AqrW0TbnftVOOxLY69abXkpCGjh50fjWOX6o8yataoZFafO2S6OuN9N8l2SO7KVxUk57Jav0lI5FXiaWqYpJAAx1ltcFrqOkkMlVFjO3kfRUreXvqKiQok5JPEnzqcfRUvMsXu82YurVDVGTKS2fdQ4FhJI7sg8fgKz6TFv05afsaPbYMOLclFa3BHbCPzOMDeCfxcvga7HopWhfrd/vCgQgJaiIPQnJWr/APX50nBGY5sN7r1nFa5lbwkz4MN9AfVWLpSlaq+cpSnWlCEPCtY2i6OY1vpOdZ3AkPLTvx3D/dvJ4pPz4HwJrZ6woZFcIBFipxyOjeJGajNfO3WdoccguKdZLcy2KU26gjBCN7BB/VX9FHurQDwNWp9IfSbVh1qLqln/AJfem1F4AcN8DddHmCFfHNVhu0B223GRDc4rZWUE/pY5HzGD50tTG14zt7Lb42xshZWxjKQXPk7dezo6OntJcxSf6lvs0H8a+H8oXV4vR80wNPbOIT7re7JuZM5zI44VwQP3APnVPNDWVdybtdrZH526TAnh0ClBsH6KNfQiFEagxGYrCQlphtLSEjolIwPoK6zvyl3TJeWj787ndMlz0pSmU2lKUoQlRztj2jXXZ7a4ki22tuSqU4pr1h5R7NlQGRlI4kkZxxA4GpGrxNZaXhay09Ls07IakIwFpHtNKHFKx4g8arlDi0hpzVcocWEMNiq12fVW1TatdVQbZeZSABvumOoR2WE8hvFPH4DiTW/270ebu8lLt41/eVPEe0mK4vdB8CtRP0qNtPXnUGwbW0iPPiKdYdAbfaHBEpoH2XGyeo44+JBqyWk9omm9ZxkPWq5suOke3HcUEPIPcUHj5jI8aQpmsflIe95rLpGsflKSXdCVpQ2I322tD7E2n6oirT7QD6+1QT4jIrRtoFz246Atzypd7RcbWRum4xYzZUyDw9r2QpHx4jxqyZPXB+VdJ6Vbp63ra44xJUpBDrBIX7JGCFDoD3HnTroQRYGy0HQC1mm3zXz3j3CXb5yJ8WQ6xKaVvIeQohYV358z8a2nZei46t2uacLi1OyPtBqS4pKQkBLXtKVhIAHBOOVfja3pNnRuvbtZoufVWnA5HB+62tIWkeWceVTx6L2zUWSyL1hcGcT7ondihQ4tRc8/ArIz8AnvpOFhLrdEjTxuL8J2U8DlWhSx/wDfC3H/AA7I/wC4RW+LcQ2kqWoJSOalHArQXnkP7a7Y42tK0HTsghSSCD/SEdRTz9vVa2G6kDpWCrHOs1H22ifqmLpdDWk481yY++EOuQ0bzjTeCSR3ZOBmpPdhaSrqeEzStjBAvudFIAUDWTyrQdjcPWUTTCvyzkvOy3HiphuQQp5prA4LI65yccwK36hpuLrk8QjkdGCDbcaKvPpLbPyOz1jCQtRJRHnJGT4NrH8p8qk7Y5pBWjNCQIL7e5NfzKlJI4pcXx3fIYHlW5SocecypiSy280oglDid5JIII4HuIBrlwBVbYQHl43Tk3E5ZaRlI7Rp/wDB8lmlKVcs5KUzShCUpShCjXb9pr7f2dzHm2wqRbVCa3w44TwWP3SflVIdcRAHYk9I/rm+yWe9aMD+Uo+VfSCfEanw3ojwCmn21NLB6pUMH+NUA11ZVwId0tro/PWyZ/Kotq/ik+VKyd2ZruuS36M9o4bLCdWEOHsVvWwGypl7TNOxlp4QGDIUM54paJ/mXVzEg4ANVh9GOClzaJe5OBiLDUhOOm86B/BJqz9dps2l3UleVo82F3UlKUpTKbSlKUISlKUIXj6k0jZdXRPU71bmJjIOU74wpB70qHFJ+BqNZPoxaTW/2sS43mJjklLqF7vwKk5+tTFSq3wsfm4KmSCN5u4KOLTsL09b0pTKuOoLmlPHclXFwIPxSggEeFbzarPb7JETEtsJiGwnk2ygJT9OZ8a71eff7kmzWWfcnCAiJHcfOfwpJ/2roY1gyCk1jWDIKqOorMdqvpBzLa2kmIub2T6weCY7CQlZ890geKhU3a92nM6W7TT+nrVMudwhMBbzEFOEQmQnhvrwd3gByGQO6tF9Fex+tyL/AKqko333FpiIWrnlR7Rw+ZKK2LZNJtuqoOtrJcVAXSbPkmYEnDi2l5Qkj9XBHgfjSjCbZGxddIxE4RhNi6617Tm0DZ5fmG52splhElf9ZEnR5UlxHh2jiik/FKcVumnpNjlbTtOvaaEcWdemXzEEZG432frCcbqcDA59KrBtS0Y5oDVcmwqmCYG0odQ8BulSFjI3h0V3jz61OOy2ezan9G3GQVerxdFSHl7oycJfBOB8BUo5Ccn7J3h7nyOcxwzAKsHTGa1TSG03TGtiW7PcUuSEp3jGdSW3QO/dPMeIzW1g5ptrg4XCZlifE7BICD0KUNKV1VrhlvFiO64nBKEKUAfAZrpaavTWorDb7uxjs5sdD6cdN4A48jkVxavnC2aWu85RCRHhPOZPgg1o3o33RVx2XQGVqyqC87F58gFbw+iqgXd6yYbATCZuhA+qlGlKVNLpSlKEJSlKEL8rBI4VTvbtZfVtpGooiE4E9gvJGccVtb38yauNVZfSRipj7RbRKKQUyIaEqHfuuEH6KpWryaHdCFvfDveqHw/va4fZdr0TEdpctTySBvdlHTn4qcJqyHjVb/RIVuzdTtHmW4yvq4KshUqX9ILy1F+iEpSnKmE2lKZxwxShCUpShCUpyHClCErQdus9Vv2V35aSQp1pDAx+NaUn6E1v1R16QEZyTsqvPZDJZ7F4/qpdST9Krl8Bsqp78t1ui8r0Z4yW9mLbmAFPTpCzjwUEj6JFQjthZXpHajeTaJTsVxTokhbDhQpCnUhSgCOI4k/OpY9Fe/sy9J3Kybw7eBMLu7niUOgEH95KhWibf9GXpW0dcuNAky2buWkx1tNkgrCQgtkjkcjPHoaQnGKBuELMqG4qZhaOihK5yn5z635Lzr7zit5bjiipSj3kniasFpI5stgVjh/w/mcP/dqJpt4g6Ufdg2e0Wu5PR1lD9yuEb1jfWDg9k2o7iEAggZBUcZJGcCcdn3YahuOlDcW40ePM0XIS+iOhLDaEqfAO6BwSMZ5cBUoG5EXzWnwOzJC4nQKMNL216HdNGXSx3NC7tMuHZLhtrBcaCVgFRA5IUgqyD3dRyuYj3eHLNaTovZzorSLvrlijsrlKTu+tLf7Zzd7grPAfCt2T7tM00PLbZbvGuJCtmxi9hfM66/hZpShOBk0wsdRt6QV9TZ9mdya39124FENHjvHKv8oVWt+io6pWjbs2eCUXIkebSK070n9VpueoYOnY68tW5HbPY5dsscB5J/mqTvR304mx7PY8tLpX9qqE3dIwUEpCSnx4pJ86Va7FPlsvSywCn4O3Fq911KFKUppeaSlKUISlKZ6UISq5+lQ2EXrTr/3uweT8lpI/jVjKrr6VJ37rpxoc+xfPzUgUrW/olb3wz/uMfz9ivM9F6UI+vL9COB20MrTjkdx0f7KqztU49H+9JibT7E+ohKLlFUyrHAby2s/zoq4yTkZrtN4S3oV5WjyYW9CVmlKUynEpSlCEpSlCEpSlCErqXW2RrzbpNumNhyNKaUy6g/eSoYI+tdulBF1wi6p8Y2ofR22jNS3WnpNsc3kBxI3UTo5Pu55BxOAcHkR3GrU6a1LatXWdi7WeUiRFfAIUOCkq6pUOaVDqDXJqPTVq1XanrXeILM2I6PabcHI9FA8wodCONV01BofWewG7O6m0dJeudgUrMmO4M7iB0eSOYHRxOCOuOqzWmLTw+yVawwmwzb7KTdV+jlofVlweuLjMu3Sn1lx1UF0IQ4o8SSgggE8+GK61n0lb9MbR7BpljflQYml5EYesgKLiO3TkK4YOcnpW3bN9o9p2k6fRdLaotvIwiVFWQVxnMZ3T3g8wrqPMV5sz+3G2/wDT7/8ArpqwgZELRow27i39pW0W/SOnrUpK4FjtkVSeSmYqEEfIV64GKClW2VRJOZStf1zq+FonTcu8zCCGk7rTeeLrh91A+J+mTXp3e7wrHAfn3GS3GisJ33HVnASP/nTrVQ9rW0uTtCvYLQcYtMUqTFYVwJ73FD9I/QcO+l6mcRN81s8E4RJxCYC3cGp/HqtJvFzlXi4S7lNdLsiS4p51feonJ/8AFXX2ZW9Vq0Bp6EtJStuAzvA9CUhR/jVZ9i2z9rX9wvUWSdxhuCAHMZ3XFOpI+iFfOretMoZQlCEhKUgJSByAHIVTRMIBed1q/FdWwvbSMHg/jJfulKU8vIJjrSlKEIO+mKUoQlVr9JWQJOvrFCBGW4iSeP6Tp/2TVklEgZqoe3e9Jk7Tb1JzvN22MGxk8MoaJx++qlavNgb1IW98O92pdL+xrj9lGWhL6u1izXhsntLVMBOOoSsOAfJSh5V9BYkhqZGakMqCmnkJWhQ6pIyD8jXzZ0dJG9LhKI/Oo7VAPVSOf+Uq+VXk2Aao/KTZxb0uOb8m3Zgu5PH2PcPmgp+VdZ3ZXN65ry0fcmc3rmpIpSlMptKUpQhKUpQhKUpQhKUpQhK/LiEuoKFJCkqBBBGQRX6pQhQPctInYvtPtupbC12Olr7ITb7nGT7kRxw/m1gdEb5GO4kjkRW8TP7cLb/0+/8A66a23Ulhiamssu0zUBTEpG4rhxSeaVDxCgCPEVHmtpci3bR3JkdwoksaSmuNuAclhwEH5jNVP7oTNDHd7mjcFSoXEpGScADJNaJrPbJpbSKFtqmJuE1PARIigtWfxK5J8/lVYbvrvVGoEbtzv1xkII4oLxSj91OBXhK93/asuXim0Y+q+gUHwFmH1cmXQfytp2g7Tb3tAlgznEx4TZyzCaJ7NHif0leJ8sVpy21hoOlKuzyU73TOM4+OK9rS+lLlrG+MWi1s777pypRHstIHNau4D68utWSjbDbO3N08y4EuWqytLcLKk+1MlKUCXHPw+yOHwHIcaoYZJ7vcVp8R4rR8GDaWJvyH58yubYDop3SeiUSJbRbnXRYlOpUMFCMYQk+O7x+Kqk7nX5SnCQBX6rcY0NaGhfKqmd08rpn6k3SlBSpKhKUpQhKUpQhcMt9uLHcfdO620krWT0SBk/SqDa9vi7ixfbusnfukrdT8FrLh/wAqAPOre7ddS/k7s7uIQ5uyJ4EJnB45X7x8khVUe1zJ7NMC3A+4gyXB+Jz3f8iUn9qlZO/M1vTNb9F/Q4dNOdX2aPcrWrXNct9wjy2xlTSwvH6Q6jzGR51Zz0b9Xt2HWztkW7/QL02n1ck8O0SN5vzUgkfECqsjnW86Qu7vqrKo7ym51rWl1laTxCN7KT+yv6KHdUqgWtINl5apBFpBt7L6MA5FZrWtneso2utJQL0wUpcdRuyGwf6p5PBafnxHgRWy1eCCLhMtcHC4TpmlKV1dSlKUISlKUISlKUISlK4XpLLTjTa1hKnVFCAfvEAkj5AnyoKFlt5t1bqELClNq3VgH3TgHB8cEHzqKNox/wDr2X/0hP8A5xWr+jnqC73bWeqGbhdJkxtLfaBLzxWkK7UpyAeRwAPgBW07RATr2Xw//EJ384pZz8bLprhEokkxeRVY47Sn1oabQpbiyEpQkElRPAADqakeXsYvbarNZ48VTt4mtqlSyThmC1kJSlauWfeJ6kjA5V2rbpiXsu0cxri4wUu3SS62xDjPKKfVApJPanh7+BwHQHvqxekL3+UWnLZd3Gm2HZ0VEhTSDkJyOQPMgVnUtE03Emq+h8e+J54y11H+mCRfq4D2H3K8rZ1s5tmz61eqxgH5juDJlqThTqu4dyR0H+9bgBilK2GtDRZq+bzTPmeZJDdx1KUpSpKpKUpQhKUpQhOVYJwM1mvA1xquJo3TE69SSCI7eW0H+8cPBCR8Tj61wkAXKkxjnuDGi5KgD0itUIv2sIun23wmHakFclWeCVqG8s/soH1NVavtyXdrtKnKTuds4VJT+gnklPkAB5VvWtb6+LfKlSniu43pxZWo8+z3suK/aVhI8EqqNlHJzS9MCbyHf2W3xp7YsFEw5RjPzcdViu/Zbk5ap7clCd8A7q0E4C0EYUk/EE10KyCRypki+RWCRcWKs5sE2iN6O1ILZJk5sd53Nx1XANuHghZ7s+4ruI8KtqFZr5saTuoeR9kSFABZKoyjwCVnmgnuVw+Csd5q4uwDap+VNsTpy7vH7ZgIwhTh9qUyOGf108leR76VjPLdyzpslITyn8p2mymOlKU0nEpSlCEpSlCEpSlCF+XHEtoK1HASMn4VXbbvfJzO0vSBt9wlNR3WmHUpaeUlC96RjOAeqeHw4VJ23OS/E2V396O6406ltsBbaylQy6gHiOPI1HGyjZtb9oGktO368yJciVbpT6AoyFZ7NLhUhPXkrHlkUtMS48seqTqCXnlN11UlaC2UWbQV6u9ytqpJcnq3QHHd4JbzvYxgcd4q8sVxTUhe223AgKSdPvgg8f75Nb7g7vPj31VS+bSdcQNpLp34arxEU5aWsRhuqQp0YynPM+yc+Ncme2ID1XoeDcOkqTI2Gws065KetqWhDr7TAtTcoxlofRISQkHeKQRunPL3udRhbbteNKbZrHouNdXXbXDjswggtpG+jsd454ZGVAHn0qfIqXRHaTIUlbyUALUkYBVjiQPjUa682bQBerprtuRKanRrc8tG47gB1LRSlQGM+7nrzxXZo8w9uu/op8Oq2tDqefNpBw+TjldSVFltS2w40tK0klOQeoJB+RBHlXNyqF/RiuEy4aZuxlypEjs5qQkvOFZTlsE4zyyTn41NFWxPxsDuqRrqU0s74Cb4SlKUqxKpSlKEJSlKELClAc6q5t614nVmpE2CHKS3aLSVLkPg5SXEj21+IQMgd5J7xUobc9qCdGWY2q3Oj7ZnoIQUnjHa5Fz49E+PHpVOda3j1COqxsqzIWQucrOSkg5SznwPtK/FgfdpWUmR3Kb81v8ADmNo4TXyjPRg6nr8lrepLyb5dHJIQW2UgNMNZ/q2k8Ep+OOJ7ySa8qskkmsU0BYWCwnvL3FztSlKUoUVkHBqRdI6qmessXGDKXHvVvIdS6k+06E/fHeoDgodRx76jmueLKdivofYcW242oKSpKsFJHUVXJGHixVU0QkbYr6IbJ9qUDaPZQsdnHusZKRLiA+6eW+nvQendyPjvlfP7ROtJ0S4sXqySRCvMQFbjSB7LqfvEJ6pI95HTmOHu3E2XbWbVtGtvslMS6sIzJhqXkj8aD95B7+nI+MI5DfA/X3VcUxvy5Nfdb7T+NYzWia02nu6SnyGW9LXm5x4UcSpsthKUNMNHPEFXvkYJIHKri4DVXucGi5W+UrXb3rOLadEyNWtMrlxG4YmoQkhCnEEAjny4Gtd05teRdLpGt1507ctPLnR1yYb0xaFNSEJTvKwpJ4EJ48elRL2g2K4ZGg2JUiUqLF7ci5HcvMPRmoJmmmlEKu7aUhJQDguJbPtFA76917ahbjeoVvhx1zGJtodvDMttwBCm0fdweOT9KOY1cErDuve1dpqHq/T02yTg4Y8pASrs17isggjB+IFdbQmj4WhdNxrLADnZt5cWVrKypxXFRz3Z5VqkHbpaLjs4ma1jwXyIK0tyIBcT2qFKWlKePLBCgQfj3VjUe2C56evLFsXoS8SPXHzHgvIkNBMxQTvewD4d/dUcTL4lDHHfGpNqF71oH1n0gbXcuyzFcjfaLhA4do17HHzLZqRJOprszpRm8t6WuL09wIKrSlxAebycEFXu8OdahZNr8q9mbO/Ie5sxrcmQiRMU+2QyppJUps9ckgDuyRXJcDrB3qtigfPEHyQ6EFpzG6lFAPWuC4QGLnEfhSmw5HfbU04jON5JGCPkajzT22lN1lWdFy0xdLREvKgiDNecQtp1ZGQPZ4jNerfNqdtseu7fpJ2K8tyYEBcpKgG2FL3txKhzyrd+tS5rSLqjsU7X4Q3PM/TX6L1NE6GtOhbe7DtTPZJfdLrh3id48k8yeScDyrY60LU20yXZNVfk5bdK3G9ykxEzF+quoTuoKinkrxH1rqy9tdsa0m9fY9snOvxpjcCRbXMNPsvLOAlWcjz61wPY3IbKbqaolIkcLl3n10/wqR6VHE3avdLPp+4Xm86IutsREWyhtp99vMguL3fZI5Y4Hj31+7dtgYEmbE1DYbnp6VFhLuIblFK+2YR7xQU9R3VLmN0UOxTWxBtx6j/ADdSJStG0dtJl6onsR5Gk7va2Jcf1mLLe3VtOt+JT7hIIwDzrec1JrgRcKmWJ0TsLxmhOBk1p20raNbtn1kMt7dfmvZREi5wXl45nuSOp8uZr87R9plp2e2rt5ag/NeB9WhoVhbp7z3JHU/71UbXOupdwmr1DqN1Mu4ShmHCPBG590lP3Wh0HNZz0yaollIOBni9lp0HD2ub2mpNox9XeQXT1hrKYmS/fbnIMi+XA9oxnj2I6OkdABwbHhnkBmJ3XFOrK1ElROSScknvrsXC4ybjMelynVPPvK31rUeZ/wBu7HQcK6lTiiEYsluIVrqqTERYDIDoEpSlWpFKUpQhKUpQhc0WU7EeQ8y4ttxCgpK0HCkkciDUhaV1e85OjzIco229sqCmnWlBAeV3p6JUeqT7KumORjes1XJGHixVckTZBYq9+y7b5B1IWrRqZTdtvAO4l1Q3WZKu7j7i/wAJ4d3dX421XMXaPO03PsuqkgM9rbpNrQXGZzqkkdm4lI90HGUq58+6qeWnWAKExruFvNgbqJCRl1sdxz76fA8R0PSpz2d7d77pCOw1JdF+0+MIQrtD2jQ7krPEEfoL8sUu5zmDDJp1S7i9owyadVN2sod1k7C58OTBxdF2YIcixm84d3E5QlKfHhgV5Fo2PPz7MzcLzqO6XKd9jriQmpSEttwC8zunCUjJIzjjxwK3fRu0fTeuYwcs9wQt4Deciuew+18UHj5jI8a2jnV4a12equ5bXZ6qDbTri7af0M3oyToq/OajjQzbm2mopVGeO6UBztfd3OOTXWtGjLrpi/aatz0Z971LSEyO8822pTSXlKKtzeAxnJwB1xU9cOVZxRyupXOTpc6Kq942f3637KLNd7PAlmRcLe1AvEAMK7RW47vNO7nPeSQEnhyI8alzaBAlSdUbN3WYr7qI9zK3lobKg0nscZUQOAzwyakvFZrghA0QIAL28vsvylICRwqItG22axoTX7L0KS24/cLkppCmiFOBSOBSCOIPTHOpfpipuZc3T0U5jaWga2+yrxpLS90sk7Qc6/m83KzmMFMxloUU2qWE+zvIA93HAE8jzrrTtJ651ZatR6kYt0FkXKYJzSZXaJmtpjqPZBtOMDgOAPPNWQxTAqrs4ta6f/1eTFjwi/8A3fRQcNXP2/aBE1VPsN9eam6cZaUiLBWtTbxcJUlQwMYwefhXhaq09fLrprUmppNlnw13u7wnGre2gqkNsNEjfUlPJRBzVjsfGnKumG4sSos4ny3BzGWItvsDdV6vUaNctnV+t9hj62kOqkwnCL004tf9bj81njwwSceFetbdO3HT+sdQN3uBc9WyV2pQtciUrKH2SPzkYnG6hZPzFTcSBzNa9q3XmntFwzIvNxajkjKGB7Trv6qBxP8ADxoMQHeJXW18kgMUbb3+u2+uyizZuqXG1rAjaYh6ngWPsXDdIF2QrsIi8eylpSuOd7hw6V7u0/brbNHpctlmU1cr17pSk5ajn8ZHM/hHHvxUYa+28X7V7UiNZv8AkNlRlL0l1zdcUD0U5yTn9FOVHxqCrvrZmEFMWIq7U5Crg4ndc48+yT9z9Y+0fw8qoa5zhhi06/wtGeCGIieu8VsmA3J/5FbFrHWT7NwfuF8fN1vzxyWXjlDHd2g5DHRocvvY5GMbjcZNyluSpb7j77qipTizkk//AD5V1luKcUVK5mvzTUcQYMlj1tfJVOu7IDQDQBZ51ilKsSKUpShCUpShCUpShCUpShCzyru228TLS/20R9baiN1QHFKx3KSeBHgRXRpQhb5aNaxFvNvPF20zEHeRIjFW4D34B30fs5HgKm3SXpD6tsUdH2kY+pLanA9YDg7RI/8AVT1/XGaqvmuxEuMuA8H4kl2O6PvtKKT9KXdTi92Gyq5QGbclf/TPpBaJ1AlCJE1y0SFYHZz07qc+Dgyn5kVIcOfFuDAfhyWJLR5OMuBaT5jhXzci67kjhPhx5nesDsXD5p4HzSa2Cy68hw3w9brpdbM/3pJ3R+02Qf8ALXMUzdRf0UxfdfQoEHkQazVOLLt61tECW4urodyHIIldmtR/fCVfWtuh+krrRlomVYbXLSnmttDiPqlShR2kDxAj5K1rC7RWZpVdm/SouTSf6TpJgHl7Mpaf4or8r9Km5OA+r6SYz3mWtX8EUdri6q9tHK7QKxdfneHI1WmV6SmtJCN6JYLbGRy31ocWPmSBWp3rb3rmWlTcrVMC2pzgpjlpCh+7vKo7S0+EE/JXN4bJ/e4D1Kt9JlsQ2lPSXm2Gk8StxQSkeZqP9TbetEad320XI3OQnI7KAO049xXwSPnVQL1ryNcHC7dL5dLy7+0pP7zhGPJNa9J104jIt1vjxscnHh27g/e9kfu0Y5XaC3qrm09FFnLIXeTR+SrB6q9IfVl9Zd+xY7Fht/JUpawV4/8AUVhKfIE1Ct71tARIdkrkPX64LOVuurWGs+Kj7bn+UeJrRrjeLhdXu1nS3pCxwBcVnd+A5Dyrp5Jrop7m8hv7KTuLGNpZSMDB13+q9K8aiuF8cQqY+Slvg20gBLbY7koHAfxPXNeaTk1ilMAW0WS5xcbuOaUpShRSlKUISlKUIX//2Q==" alt="3 Point Traders" width="112" height="112">
+    <div><span class="eyebrow ta">🎓 இலவச கற்றல் சமூகம் • Free Learning Community</span></div>
   </header>
 
-  <section class="hero">
-    <div class="eyebrow">Free Telegram Class · இலவச டெலிகிராம் வகுப்பு</div>
-    <h1>Learn with <span>3 Point Traders</span></h1>
-    <div class="taLine">சரியான Entry, Target &amp; Stop-Loss வைத்து சந்தையை புரிந்துகொள்ளுங்கள் — 3 பாயிண்ட் முறையில்.</div>
-    <div class="subEn">Simple 3-Point method to read any chart — Entry, Target &amp; Stop-Loss. Join our Telegram channel and start learning today.</div>
+  <div id="back" class="ta">✅ Telegram திறந்ததா? அங்கே “REQUEST TO JOIN” அழுத்த மறக்காதீர்கள். திறக்கவில்லை என்றால் கீழே உள்ள பட்டனை மீண்டும் தட்டவும்.<br><small>Tap “REQUEST TO JOIN” inside Telegram. If it did not open, tap the button again.</small></div>
 
-    <div class="ctaWrap">
-      <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="hero"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
-    </div>
-    <div class="ctaWrap" style="margin-top:10px;">
-      <div class="microcopy">100% Free to join · இணைவது இலவசம்</div>
-      <div class="steps">1️⃣ Tap the button → Telegram opens &nbsp; 2️⃣ Tap <b>"Join / Request to Join"</b>
-        <span class="ta">1️⃣ பட்டனை அழுத்தவும் → Telegram திறக்கும் &nbsp; 2️⃣ <b>"Join / Request to Join"</b> அழுத்தவும்</span></div>
-      <div class="fbNote" data-note>Telegram did not open? <a href="#" class="tgFallback" rel="noopener">Tap here</a>, or use the (⋮) menu → "Open in Browser / Chrome".
-        <span class="ta">Telegram திறக்கவில்லையா? <a href="#" class="tgFallback" rel="noopener">இங்கே அழுத்தவும்</a> அல்லது (⋮) மெனு → "Open in Browser / Chrome" தேர்வு செய்யவும்.</span></div>
-    </div>
-  </section>
+  <a id="cta1" class="cta" href="#cta1" rel="noopener" data-cta="1">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg>
+    <span class="ta lbl">⏳ ஏற்றப்படுகிறது… / Loading…</span>
+  </a>
+  <p class="hint ta" id="hint1">ஒரு வினாடி காத்திருந்து மீண்டும் தட்டவும்.<br>Please wait a second and tap again.</p>
+  <p class="note ta">Telegram-ல் “REQUEST TO JOIN” அழுத்த மறக்காதீர்கள் / Don't forget to tap “REQUEST TO JOIN”</p>
 
-  <section class="points">
-    <h2>The 3-Point Method<span class="ta">3 பாயிண்ட் முறை என்றால் என்ன?</span></h2>
-    <div class="pointCards">
-      <div class="pointCard entry">
-        <div class="pointMark">E</div>
-        <div class="txt">
-          <div class="en">Point 1 — Entry</div>
-          <div class="ta">சரியான நேரத்தில் market-ஐ எப்படி entry பண்றது என்று கற்றுக்கொள்வீர்கள்.</div>
-        </div>
-      </div>
-      <div class="pointCard target">
-        <div class="pointMark">T</div>
-        <div class="txt">
-          <div class="en">Point 2 — Target</div>
-          <div class="ta">Profit book பண்ண சரியான Target level-ஐ எப்படி வைப்பது என்பதை பார்ப்போம்.</div>
-        </div>
-      </div>
-      <div class="pointCard sl">
-        <div class="pointMark">SL</div>
-        <div class="txt">
-          <div class="en">Point 3 — Stop-Loss</div>
-          <div class="ta">Capital-ஐ பாதுகாக்க Stop-Loss எப்படி set பண்றது என்பதை practical-ஆ கற்போம்.</div>
-        </div>
-      </div>
-    </div>
+  <h1>3 Point Traders - Skill Learning Machine</h1>
+  <p class="sub ta">எளிய தமிழில் டிரேடிங் திறன்களைக் கற்றுக்கொள்ளுங்கள்</p>
+  <p class="lead ta">Entry • Target • Stop-Loss — Learn trading skills in simple Tamil</p>
 
-    <div class="ctaWrap">
-      <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="mid"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
-    </div>
-  </section>
+  <a id="cta2" class="cta" href="#cta1" rel="noopener" data-cta="2" style="margin-top:22px">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg>
+    <span class="ta lbl">⏳ ஏற்றப்படுகிறது… / Loading…</span>
+  </a>
+  <p class="hint ta" id="hint2">ஒரு வினாடி காத்திருந்து மீண்டும் தட்டவும்.<br>Please wait a second and tap again.</p>
 
-  <section class="benefits">
-    <h2>Why Join Us<span class="ta">ஏன் எங்களுடன் சேர வேண்டும்?</span></h2>
-    <div class="benList">
-      <div class="benItem">
-        <div class="tick">✓</div>
-        <div>
-          <div class="en">Daily chart breakdowns in simple Tamil + English</div>
-          <div class="ta">தினமும் எளிய தமிழ் + ஆங்கிலத்தில் chart விளக்கம்</div>
-        </div>
-      </div>
-      <div class="benItem">
-        <div class="tick">✓</div>
-        <div>
-          <div class="en">Learn the same 3-Point method used by our community</div>
-          <div class="ta">எங்கள் community பயன்படுத்தும் 3 பாயிண்ட் முறையை கற்றுக்கொள்ளுங்கள்</div>
-        </div>
-      </div>
-      <div class="benItem">
-        <div class="tick">✓</div>
-        <div>
-          <div class="en">Beginner friendly — no prior experience needed</div>
-          <div class="ta">Beginners-க்கும் ஏற்றது — முந்தைய அனுபவம் தேவையில்லை</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="finalCta">
-    <div class="card">
-      <h3>Start Learning Today<span class="ta">இன்றே கற்க தொடங்குங்கள்</span></h3>
-      <div class="ctaWrap" style="margin-top:16px;">
-        <a href="#" rel="noopener" class="jnBtn ctaBtn" data-id="final"><i class="tag">FREE</i><span class="shine"></span><span class="tgIcon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L24 4.1c.4-1.6-.6-2.3-1.7-1.9L1.5 10.3c-1.6.6-1.6 1.5-.3 1.9l5.3 1.6 12.3-7.8c.6-.4 1.1-.2.7.2z"/></svg></span><span class="lbl"><b class="en">Join Now — Telegram</b><span class="ta">இப்போதே டெலிகிராமில் சேரவும்</span></span><span class="arr">➜</span></a>
-      </div>
-      <div class="fbNote" data-note>Telegram did not open? <a href="#" class="tgFallback" rel="noopener">Tap here</a> · <span class="ta">Telegram திறக்கவில்லையா? <a href="#" class="tgFallback" rel="noopener">இங்கே அழுத்தவும்</a></span></div>
-      <p class="small">Limited seats in the free batch · இலவச batch-ல் இடங்கள் குறைவு</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="agencyBlock">
-      <b>Advertised by: SRS Marketing Agency</b><br>
-      Telegram: <a href="https://t.me/srsagency" target="_blank" rel="noopener">t.me/srsagency</a>
-    </div>
-    <div class="disclaimer">
-      This Platform is only for educational purpose, not recommended any investment, trading or financial advice.
-      <span class="ta">இந்த தளம் கல்வி நோக்கத்திற்காக மட்டுமே, முதலீடு, டிரேடிங் அல்லது நிதி ஆலோசனையாக கருதப்படக்கூடாது.</span>
-    </div>
-  </footer>
-
+  <p class="disc ta">⚠️ இது கல்வி நோக்கத்திற்காக மட்டுமே. முதலீட்டு ஆலோசனை அல்ல. பங்குச் சந்தையில் ரிஸ்க் உள்ளது; லாபத்திற்கு உத்தரவாதம் இல்லை.<br>Educational purpose only. Not investment advice. Market investments carry risk and no profit is guaranteed.</p>
+  <p class="ad">Ad by: <a href="https://t.me/srsagency" rel="noopener">SRS Marketing Agency</a></p>
 </div>
-
-<div class="sheet" id="cf" role="dialog" aria-modal="true">
-  <div class="panel">
-    <button class="x" id="cfX" type="button" aria-label="Close">&times;</button>
-    <div id="cfBody">
-      <h3>Did you tap "REQUEST TO JOIN"?<span class="ta">Telegram-ல் "REQUEST TO JOIN" அழுத்தினீர்களா?</span></h3>
-      <div class="tgMock">
-        <div class="rq">REQUEST TO JOIN</div>
-        <span class="up">&#9757; Tap this blue button inside Telegram<br>Telegram-ல் இந்த நீல பட்டனை அழுத்தவும்</span>
-      </div>
-      <button type="button" class="cfBtn yes wait" id="cfYes">&#9989; Yes, I sent the request<span class="ta">ஆம், அழுத்திவிட்டேன்</span></button>
-      <a href="#" rel="noopener" class="cfBtn again jnBtn2">&#128178; No &mdash; open Telegram again<span class="ta">இல்லை, மீண்டும் திறக்கவும்</span></a>
-    </div>
-    <div class="cfDone" id="cfDone">&#127881; Great! Now wait for admin approval in Telegram.<span class="ta">அருமை! Telegram-ல் admin approve செய்யும் வரை காத்திருக்கவும்.</span></div>
-  </div>
-</div>
-
-<div class="backBar" id="back">Did you tap <b>"REQUEST TO JOIN"</b> in Telegram?
-  <span class="ta">Telegram-ல் <b>"REQUEST TO JOIN"</b> அழுத்தினீர்களா? இல்லையெனில் மீண்டும் திறக்கவும்.</span>
-  <a href="#" class="tgFallback" rel="noopener">📲 Open Telegram again · மீண்டும் திறக்கவும்</a></div>
 
 <script>
-(() => {
-  'use strict';
-  const CONFIG = Object.freeze({
-    pixelId: '1116860857387195',
-    telegramUrl: ['https://t.me/+','4XFar3obWc','Y1YWRl'].join(''),
-    telegramInvite: ['4XFar3obWc','Y1YWRl'].join(''),
-    pageViewDelayMs: 1000,
-    passiveReaderDelayMs: 3000,
-    minimumClickTimeMs: 2500,      // tap before this = no Lead eligibility (accidental / bot-speed taps)
-    minAwayMs: 6000,               // must stay out of the page (inside Telegram) at least this long
-    maxAwayMs: 30*60*1000,         // returning after >30 min = unrelated visit, ignored
-    confirmEnableMs: 2000,         // "Yes" button stays locked for 2s (stops reflex taps)
-    leadMode: 'confirm',           // 'confirm' = Lead only after Yes tap | 'return' = Lead on return from Telegram (no question)
-    sessionKey: 'tpt_qualified_page_view',
-    leadKey: 'tpt_lead_v2',
-    leadWindowMs: 12*60*60*1000
+/* ===== CONFIG ===== */
+var CFG={
+  pixel:'1472658634717232',
+  tg:'https://t.me/+msmIWSzp4HFmYjdl',
+  event:'Lead',
+  page:'3 Point Traders - Skill Learning Machine',
+  minDwellMs:1500,
+  minScore:5,
+  androidDirect:true   /* Android in-app: open Telegram app directly. Set false to use the Chrome hop instead */
+};
+/* ===== Meta Pixel (no auto PageView: qualified PageView is fired below) ===== */
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init',CFG.pixel);
+
+(function(){
+  var ua=navigator.userAgent||'';
+  var q=location.search||'';
+  var DEBUG=/[?&]debug=1/.test(q);
+  var t0=Date.now(),visSecs=0,pvFired=false;
+  var trusted=false,anyAct=false,scrolled=false,tDown=0,trapHit=false,tapped=false,tapAt=0,returned=false;
+  var $=function(id){return document.getElementById(id)};
+  var ctas=[$('cta1'),$('cta2')],hints=[$('hint1'),$('hint2')];
+
+  var isBot=(function(){
+    try{
+      if(navigator.webdriver)return true;
+      if(/HeadlessChrome|PhantomJS|Puppeteer|Selenium|Playwright|Lighthouse|bot|crawl|spider|facebookexternalhit|Facebot|Bytespider/i.test(ua))return true;
+      if(window.callPhantom||window._phantom||window.__nightmare)return true;
+    }catch(e){}
+    return false;
+  })();
+
+  var inApp=/FBAN|FBAV|FB_IAB|FBIOS|Instagram/i.test(ua);
+  var isAndroid=/Android/i.test(ua);
+  var isMobileUA=/Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+  var finalHref=CFG.tg;
+  var hashM=CFG.tg.match(/t\.me\/\+([\w-]+)/);
+  if(inApp&&isAndroid){
+    if(CFG.androidDirect&&hashM){
+      finalHref='intent://join?invite='+hashM[1]+'#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url='+encodeURIComponent(CFG.tg)+';end';
+    }else{
+      finalHref='intent://'+CFG.tg.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(CFG.tg)+';end';
+    }
+  }else if(inApp){
+    $('iab').style.display='block';
+  }
+
+  /* honeypot: invisible link, only automation touches it */
+  ['click','focus','mousedown','touchstart'].forEach(function(ev){$('trap').addEventListener(ev,function(e){e.preventDefault();trapHit=true})});
+
+  /* human signals */
+  ['touchstart','pointerdown','mousedown','keydown'].forEach(function(ev){
+    window.addEventListener(ev,function(e){if(e.isTrusted){trusted=true;anyAct=true}},{passive:true});
   });
-  const pageOpenedAt = Date.now();
-  let pageViewTracked = false, leadTracked = false, humanInteraction = false;
-
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
-  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', CONFIG.pixelId);
-
-  const ua = navigator.userAgent;
-  const isFbIab = () => /FBAN|FBAV|FB_IAB|Instagram/i.test(ua);
-  const isAndroid = () => /Android/i.test(ua);
-  const isIOS = () => /iPhone|iPad|iPod/i.test(ua);
-  const automation = () => navigator.webdriver === true || /HeadlessChrome|PhantomJS|Puppeteer|Selenium/i.test(ua);
-
-  const sessionHas = () => { try { return sessionStorage.getItem(CONFIG.sessionKey) === 'true'; } catch (e) { return false; } };
-  const sessionSave = () => { try { sessionStorage.setItem(CONFIG.sessionKey, 'true'); } catch (e) {} };
-
-  // PageView only for visitors who stay and look like real people (stops bot/accidental views inflating the funnel)
-  function tryPageView() {
-    const t = Date.now() - pageOpenedAt;
-    const ok = !pageViewTracked && !sessionHas() && !automation() &&
-      ((humanInteraction && t >= CONFIG.pageViewDelayMs) || t >= CONFIG.passiveReaderDelayMs) &&
-      document.visibilityState === 'visible' && typeof window.fbq === 'function';
-    if (!ok) return;
-    fbq('track', 'PageView', { qualified_view: true, time_on_page: Math.round(t / 1000) });
-    pageViewTracked = true; sessionSave();
-  }
-  function onHuman(e) { if (!e.isTrusted || humanInteraction) return; humanInteraction = true; tryPageView(); }
-  ['pointerdown','touchstart','keydown','scroll','mousemove'].forEach(n => window.addEventListener(n, onHuman, { passive: true, once: true }));
-  setTimeout(tryPageView, CONFIG.pageViewDelayMs);
-  setTimeout(tryPageView, CONFIG.passiveReaderDelayMs);
-
-  const androidIntent = () => `intent://join?invite=${CONFIG.telegramInvite}#Intent;scheme=tg;S.browser_fallback_url=${encodeURIComponent(CONFIG.telegramUrl)};end`;
-
-  /* ===== Telegram buttons + "real request" Lead logic =====
-     - Buttons are real <a href> links: Telegram opens instantly, no form, no popup, no preventDefault, no delay.
-     - TAP DOES NOT FIRE Lead any more. A tap only starts an "attempt".
-     - Lead fires only after ALL of these are true:
-         1) real finger tap (isTrusted, not automation) after >= minimumClickTimeMs on the page
-         2) the page really went to the background (visitor is inside Telegram)
-         3) visitor stayed away >= minAwayMs (enough time to actually press REQUEST TO JOIN)
-         4) visitor comes back and taps "Yes, I sent the request" (leadMode 'confirm'; Yes unlocks after 2s)
-     - once per device per 12h; fake / accidental / repeat taps never become a Lead. */
-  const $ = id => document.getElementById(id);
-  const back = $('back'), sheet = $('cf'), cfYes = $('cfYes'), cfBody = $('cfBody'), cfDone = $('cfDone');
-  const tgUrl = CONFIG.telegramUrl;
-  const btnHref = () => (isFbIab() && isAndroid()) ? androidIntent() : tgUrl;
-  let attempt = null, pending = null, handedOff = false, hiddenAt = 0, watch = null, enableTimer = null;
-
-  function setLinks() {
-    document.querySelectorAll('.jnBtn, .jnBtn2').forEach(a => a.setAttribute('href', btnHref()));
-    document.querySelectorAll('.tgFallback').forEach(a => a.setAttribute('href', tgUrl));
-  }
-
-  const leadDone = () => { try { const t = +localStorage.getItem(CONFIG.leadKey); return !!t && Date.now() - t < CONFIG.leadWindowMs; } catch (e) { return leadTracked; } };
-  const leadMark = () => { leadTracked = true; try { localStorage.setItem(CONFIG.leadKey, String(Date.now())); } catch (e) {} };
-  const track = (name, data) => { try { if (typeof window.fbq === 'function') fbq('trackCustom', name, data || {}); } catch (x) {} };
-  const closeSheet = () => { sheet.classList.remove('show'); clearTimeout(enableTimer); };
-
-  function fireLead(a, awayMs, confirmed) {
-    if (leadDone() || typeof window.fbq !== 'function') return false;
-    const id = 'ld_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
-    try {
-      fbq('track', 'Lead', { value: 0, currency: 'INR', destination: 'Telegram', confirmed: confirmed ? 1 : 0, away_s: Math.round(awayMs / 1000), time_on_page: a.onPage }, { eventID: id });
-    } catch (x) { return false; }
-    leadMark();
-    return true;
-  }
-
-  /* 1) tap -> start attempt (NO Lead here) */
-  function startAttempt(e) {
-    if (!e.isTrusted || automation()) { e.preventDefault(); return; }
-    const t = Date.now() - pageOpenedAt;
-    attempt = {
-      at: Date.now(), onPage: Math.round(t / 1000),
-      eligible: document.visibilityState === 'visible' && t >= CONFIG.minimumClickTimeMs && !leadDone() && typeof window.fbq === 'function'
-    };
-    pending = null; handedOff = false; hiddenAt = 0;
-    back.style.display = 'none'; closeSheet();
-    track('TgTap', { eligible: attempt.eligible ? 1 : 0, time_on_page: attempt.onPage, in_app: isFbIab() ? 1 : 0, os: isAndroid() ? 'android' : (isIOS() ? 'ios' : 'other') });
-    /* navigation stays 100% native; this only shows the help note if Telegram did not open */
-    clearTimeout(watch);
-    watch = setTimeout(() => {
-      const stuck = !handedOff && document.visibilityState === 'visible';
-      track('TgHandoff', { result: stuck ? 'stuck' : 'ok', in_app: isFbIab() ? 1 : 0, os: isAndroid() ? 'android' : (isIOS() ? 'ios' : 'other') });
-      if (stuck) document.querySelectorAll('[data-note]').forEach(n => n.classList.add('show'));
-    }, 2200);
-  }
-
-  /* 2) leaving the page = inside Telegram (remember when) */
-  const markHidden = () => { handedOff = true; if (attempt && !hiddenAt) hiddenAt = Date.now(); };
-  document.addEventListener('visibilitychange', () => { document.visibilityState === 'hidden' ? markHidden() : onReturn(); });
-  window.addEventListener('pagehide', markHidden);
-  window.addEventListener('blur', () => { handedOff = true; });
-  window.addEventListener('pageshow', ev => { if (ev.persisted) onReturn(); });
-
-  /* 3) back on the page: was the visitor away long enough for a real request? */
-  function onReturn() {
-    if (!attempt || !hiddenAt || document.visibilityState !== 'visible') return;
-    const away = Date.now() - hiddenAt; hiddenAt = 0;
-    if (away > CONFIG.maxAwayMs) { attempt = null; return; }
-    const a = attempt;
-    track('TgAway', { away_s: Math.round(away / 1000), eligible: a.eligible ? 1 : 0 });
-    /* too fast / not eligible: no Lead, just the "open Telegram again" reminder */
-    if (!a.eligible || away < CONFIG.minAwayMs) { back.style.display = 'block'; return; }
-    if (CONFIG.leadMode === 'return') { fireLead(a, away, false); attempt = null; back.style.display = 'block'; return; }
-    openSheet(a, away);
-  }
-
-  /* 4) confirmation sheet (one tap, NOT a form) */
-  function openSheet(a, away) {
-    pending = { a: a, away: away };
-    cfBody.style.display = 'block'; cfDone.style.display = 'none';
-    cfYes.classList.add('wait');
-    sheet.classList.add('show');
-    clearTimeout(enableTimer);
-    enableTimer = setTimeout(() => cfYes.classList.remove('wait'), CONFIG.confirmEnableMs);
-  }
-  cfYes.addEventListener('click', e => {
-    if (!e.isTrusted || automation() || !pending || cfYes.classList.contains('wait')) return;
-    fireLead(pending.a, pending.away, true);
-    track('TgConfirm', { result: 'yes' });
-    attempt = null; pending = null;
-    cfBody.style.display = 'none'; cfDone.style.display = 'block';
-    setTimeout(closeSheet, 2600);
+  window.addEventListener('scroll',function(e){if(e.isTrusted){anyAct=true;if((window.scrollY||0)>20)scrolled=true}},{passive:true});
+  window.addEventListener('mousemove',function(e){if(e.isTrusted)anyAct=true},{passive:true});
+  ctas.forEach(function(a){
+    a.addEventListener('pointerdown',function(e){if(e.isTrusted)tDown=Date.now()},{passive:true});
   });
-  $('cfX').addEventListener('click', () => { track('TgConfirm', { result: 'dismiss' }); pending = null; attempt = null; closeSheet(); });
 
-  function init() {
-    setLinks();
-    document.querySelectorAll('.jnBtn, .jnBtn2, .tgFallback').forEach(b => b.addEventListener('click', startAttempt));
+  /* 0-8 score; no effort needed from the visitor */
+  function score(){
+    var s=0,dwell=Date.now()-t0;
+    if(trusted)s+=2;
+    if(scrolled)s+=1;
+    if(dwell>=CFG.minDwellMs)s+=1;
+    if(visSecs>=2)s+=1;
+    var touch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
+    if(touch===isMobileUA)s+=1;
+    if(/[?&]fbclid=/.test(q))s+=1;
+    if(window.innerWidth>=300&&screen.width>0&&screen.height>0&&!(screen.width===800&&screen.height===600))s+=1;
+    if(navigator.languages&&navigator.languages.length)s+=1;
+    return s;
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
+  function ready(){return !isBot&&!trapHit&&anyAct&&(Date.now()-t0>=CFG.minDwellMs)&&score()>=CFG.minScore}
+
+  function render(){
+    var r=ready();
+    ctas.forEach(function(a){
+      var lbl=a.querySelector('.lbl');
+      if(r){
+        if(a.getAttribute('href')!==finalHref)a.setAttribute('href',finalHref);
+        a.classList.add('ready');
+        lbl.textContent=returned?'📲 மீண்டும் Telegram திறக்க — Open Telegram':'📲 Telegram-ல் சேருங்கள் — Join Free';
+      }else{
+        if(a.getAttribute('href')!=='#cta1')a.setAttribute('href','#cta1');
+        a.classList.remove('ready');
+        lbl.textContent='⏳ ஏற்றப்படுகிறது… / Loading…';
+      }
+    });
+    if(r)hints.forEach(function(h){h.classList.remove('show')});
+    if(DEBUG){var d=$('dbg');d.style.display='block';d.textContent='score '+score()+' trusted:'+trusted+' scroll:'+scrolled+' bot:'+isBot+' trap:'+trapHit+' tapped:'+tapped}
+  }
+  setInterval(function(){if(document.visibilityState==='visible')visSecs+=0.25;render()},250);render();
+
+  /* qualified PageView: interaction + 3s, or visible 8s */
+  setInterval(function(){
+    if(isBot||trapHit||pvFired)return;
+    var el=Date.now()-t0;
+    if((anyAct&&el>=3000)||visSecs>=8){
+      pvFired=true;
+      try{fbq('track','PageView')}catch(e){}
+    }
+  },500);
+
+  /* visitor came back from Telegram without finishing -> remind + let them retry (no 2nd Lead) */
+  function onBack(){
+    if(tapped&&!returned&&Date.now()-tapAt>1200){
+      returned=true;
+      $('back').style.display='block';
+      try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){window.scrollTo(0,0)}
+      render();
+    }
+  }
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')onBack()});
+  window.addEventListener('pageshow',function(e){if(e.persisted)onBack()});
+
+  /* CTA tap: native anchor navigation on the same tap (no preventDefault / setTimeout) so the Telegram hand-off keeps user activation */
+  function onCta(e){
+    var a=e.currentTarget;
+    if(!e.isTrusted||isBot||trapHit){e.preventDefault();return}
+    var hold=tDown?Date.now()-tDown:-1;
+    var kb=(e.detail===0&&e.clientX===0&&e.clientY===0);
+    var realPos=(e.clientX>0||e.clientY>0);
+    var humanTap=kb||(tDown?(hold>=30&&hold<=1500&&realPos):(e.detail>=1&&realPos));
+    tDown=0;
+    if(!ready()||!humanTap){
+      e.preventDefault();
+      hints[a.getAttribute('data-cta')==='1'?0:1].classList.add('show');
+      return;
+    }
+    a.setAttribute('href',finalHref);
+    var k='leadFired_'+CFG.pixel,fired=false;
+    try{fired=sessionStorage.getItem(k)==='1'}catch(x){}
+    if(!fired){
+      try{sessionStorage.setItem(k,'1')}catch(x){}
+      var id='ld_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
+      try{fbq('track',CFG.event,{content_name:CFG.page},{eventID:id})}catch(x){}
+    }
+    tapped=true;tapAt=Date.now();
+  }
+  ctas.forEach(function(a){a.addEventListener('click',onCta)});
 })();
 </script>
-
 </body>
 </html>
