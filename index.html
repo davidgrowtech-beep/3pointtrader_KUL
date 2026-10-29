@@ -173,13 +173,15 @@ fbq('init',CFG.pixel);
   }
   setInterval(function(){if(document.visibilityState==='visible')visSecs+=0.25;render()},250);render();
 
-  /* qualified PageView: interaction + 3s, or visible 8s */
+  /* PageView fires at once for non-bots, so Meta's Landing Page Views show real arrivals (click -> LPV drop is then measurable).
+     The old quality gate (interaction + 3s, or visible 8s) now fires a custom event: EngagedView */
+  if(!isBot){try{fbq('track','PageView')}catch(e){}}
   setInterval(function(){
     if(isBot||trapHit||pvFired)return;
     var el=Date.now()-t0;
     if((anyAct&&el>=3000)||visSecs>=8){
       pvFired=true;
-      try{fbq('track','PageView')}catch(e){}
+      try{fbq('trackCustom','EngagedView')}catch(e){}
     }
   },500);
 
